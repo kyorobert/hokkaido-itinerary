@@ -17,27 +17,129 @@
   body { font-family: 'Noto Serif TC', serif; background: var(--warm-white); color: var(--charcoal); max-width: 430px; margin: 0 auto; overflow-x: hidden; }
 
   /* HERO */
-  .hero { min-height: 100svh; background: linear-gradient(170deg,#C8DDEF 0%,#B5CCDD 25%,#8FAFC0 50%,#7A9DB5 70%,#A8C2A0 85%,#8AAF88 100%); position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem 1.5rem 3rem; overflow: hidden; }
-  .hero::before { content:''; position:absolute; bottom:0;left:0;right:0;height:55%; background:radial-gradient(ellipse 200% 60% at 30% 100%,#6B9E88 0%,transparent 60%),radial-gradient(ellipse 180% 55% at 70% 100%,#5A8A6A 0%,transparent 65%),radial-gradient(ellipse 140% 45% at 50% 100%,#4A7A5A 0%,transparent 70%); clip-path:polygon(0% 100%,0% 55%,10% 40%,20% 28%,30% 35%,40% 18%,50% 30%,60% 15%,70% 28%,80% 20%,90% 35%,100% 25%,100% 100%); }
-  .hero::after { content:''; position:absolute; bottom:0;left:0;right:0;height:28%; background:repeating-linear-gradient(90deg,#9B7BBE 0px,#9B7BBE 3px,#B094D0 3px,#B094D0 6px,#8B6BAE 6px,#8B6BAE 9px,#C4A8DC 9px,#C4A8DC 12px); opacity:.55; mask-image:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,0) 100%); }
-  .cloud { position:absolute; background:rgba(255,255,255,.7); border-radius:50px; filter:blur(8px); }
-  .cloud-1 { width:120px;height:35px;top:12%;left:-10%;animation:drift 18s linear infinite; }
-  .cloud-2 { width:80px;height:25px;top:20%;left:60%;animation:drift 24s linear infinite 6s; }
-  .cloud-3 { width:150px;height:40px;top:8%;left:20%;animation:drift 20s linear infinite 3s; }
-  @keyframes drift { from{transform:translateX(-150px)} to{transform:translateX(500px)} }
-  .sun { position:absolute;top:10%;right:15%;width:70px;height:70px;background:radial-gradient(circle,#FFE566 30%,#FFD040 60%,rgba(255,210,60,0) 100%);border-radius:50%;box-shadow:0 0 40px 20px rgba(255,225,100,.3);animation:pulse-sun 4s ease-in-out infinite; }
-  @keyframes pulse-sun { 0%,100%{box-shadow:0 0 40px 20px rgba(255,225,100,.3)} 50%{box-shadow:0 0 60px 30px rgba(255,225,100,.5)} }
-  .hero-content { position:relative;z-index:2; }
-  .hero-label { font-family:'Playfair Display',serif;font-style:italic;font-size:.85rem;color:rgba(255,255,255,.9);letter-spacing:.15em;margin-bottom:.5rem;text-shadow:0 1px 8px rgba(0,0,0,.2); }
-  .hero-title { font-family:'Shippori Mincho',serif;font-size:2.8rem;font-weight:600;line-height:1.2;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.2);margin-bottom:.4rem; }
+  .hero {
+    min-height: 100svh;
+    /* Sky → horizon → meadow, all painted as one smooth gradient */
+    background: linear-gradient(180deg,
+      #B8D8EE 0%,
+      #C4DFF2 15%,
+      #CEEAF5 28%,
+      #D4ECF5 40%,
+      #C8E4D8 54%,
+      #AACFB0 68%,
+      #92BC96 80%,
+      #7DAA82 92%,
+      #C0B8D8 100%);
+    position: relative; display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 2rem 1.5rem 3rem; overflow: hidden;
+  }
+
+  /* Far mountains — pale, hazy, no sharp edges */
+  .hero-hills {
+    position: absolute;
+    bottom: 18%;   /* sit above the lavender band */
+    left: 0; right: 0;
+    height: 38%;
+    /* Three overlapping radial blobs = soft mountain silhouette */
+    background:
+      radial-gradient(ellipse 160% 80% at 20% 110%, rgba(130,168,118,.55) 0%, transparent 60%),
+      radial-gradient(ellipse 140% 70% at 55% 115%, rgba(110,152,100,.50) 0%, transparent 62%),
+      radial-gradient(ellipse 120% 65% at 82% 112%, rgba(120,160,110,.45) 0%, transparent 58%);
+    /* Smooth arc, NOT a jagged spike fence */
+    clip-path: polygon(
+      0% 100%, 0% 68%,
+      8%  52%, 18% 38%, 28% 46%,
+      38% 28%, 50% 40%, 60% 22%,
+      72% 36%, 82% 20%, 92% 32%,
+      100% 22%, 100% 100%);
+    /* Fade out top edge so hills melt into sky */
+    mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,.6) 25%, rgba(0,0,0,1) 100%);
+  }
+
+  /* Lavender field — a smooth colour wash, zero spikes */
+  .hero-lavender {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 20%;
+    /* Soft purple-to-transparent from bottom */
+    background: linear-gradient(to top,
+      rgba(148,120,190,.60) 0%,
+      rgba(168,140,205,.40) 35%,
+      rgba(180,155,215,.15) 65%,
+      transparent 100%);
+    /* Very subtle vertical stripe texture — NOT a clip-path comb */
+    mask-image: repeating-linear-gradient(
+      90deg,
+      rgba(0,0,0,1)   0px,  rgba(0,0,0,1)   3px,
+      rgba(0,0,0,.85) 3px,  rgba(0,0,0,.85) 6px,
+      rgba(0,0,0,1)   6px,  rgba(0,0,0,1)   9px,
+      rgba(0,0,0,.9)  9px,  rgba(0,0,0,.9)  13px
+    );
+  }
+
+  /* Sun — soft glow only, no harsh rays */
+  .sun {
+    position:absolute;top:10%;right:14%;
+    width:72px;height:72px;
+    background:radial-gradient(circle,rgba(255,240,180,1) 25%,rgba(255,220,120,.8) 55%,rgba(255,210,100,0) 100%);
+    border-radius:50%;
+    box-shadow:0 0 35px 18px rgba(255,220,130,.22),0 0 70px 35px rgba(255,210,100,.1);
+    animation:pulse-sun 5s ease-in-out infinite;
+    z-index:1;
+  }
+  @keyframes pulse-sun {
+    0%,100%{box-shadow:0 0 35px 18px rgba(255,220,130,.22),0 0 70px 35px rgba(255,210,100,.1)}
+    50%    {box-shadow:0 0 45px 24px rgba(255,220,130,.30),0 0 90px 45px rgba(255,210,100,.15)}
+  }
+
+  /* Clouds — simple blurred pills, original style */
+  .cloud { position:absolute;background:rgba(255,255,255,.65);border-radius:50px;filter:blur(7px);z-index:1; }
+  .cloud-1 { width:110px;height:32px;top:13%;animation:drift 20s linear infinite; }
+  .cloud-2 { width:75px;height:24px;top:21%;animation:drift 26s linear infinite 7s; }
+  .cloud-3 { width:140px;height:38px;top:8%;animation:drift 23s linear infinite 3s; }
+  @keyframes drift { from{transform:translateX(-180px)} to{transform:translateX(480px)} }
+
+  /* Hero content */
+  .hero-content { position:relative;z-index:3; }
+  .hero-label { font-family:'Playfair Display',serif;font-style:italic;font-size:.85rem;color:rgba(255,255,255,.92);letter-spacing:.15em;margin-bottom:.5rem;text-shadow:0 1px 10px rgba(0,60,40,.2); }
+  .hero-title { font-family:'Shippori Mincho',serif;font-size:2.8rem;font-weight:600;line-height:1.2;color:#fff;text-shadow:0 2px 18px rgba(0,50,30,.2);margin-bottom:.4rem; }
   .hero-title span { font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:1.6rem;color:rgba(255,255,255,.95);display:block; }
   .hero-dates { display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.4);border-radius:100px;padding:.4rem 1rem;font-size:.8rem;color:#fff;letter-spacing:.08em;margin-top:.8rem; }
-  .hero-scroll { position:absolute;bottom:1.5rem;right:1.5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.3rem;color:rgba(255,255,255,.8);font-size:.65rem;letter-spacing:.1em;animation:bounce 2s ease-in-out infinite; }
+  .hero-scroll { position:absolute;bottom:1.5rem;right:1.5rem;z-index:3;display:flex;flex-direction:column;align-items:center;gap:.3rem;color:rgba(255,255,255,.8);font-size:.65rem;letter-spacing:.1em;animation:bounce 2s ease-in-out infinite; }
   .hero-scroll::after { content:'↓';font-size:1.2rem; }
   @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
+  /* ── SEASON DIVIDER — whisper-thin, elegant ── */
+  .season-banner {
+    position:relative;overflow:hidden;
+    padding:.9rem 1.5rem;
+    display:flex;align-items:center;gap:.8rem;
+    background:var(--warm-white);
+  }
+  .season-banner::before,.season-banner::after {
+    content:'';flex:1;height:1px;
+  }
+  .season-banner.lavender::before,.season-banner.lavender::after {
+    background:linear-gradient(90deg,transparent,rgba(139,123,174,.35),transparent);
+  }
+  .season-banner.green::before,.season-banner.green::after {
+    background:linear-gradient(90deg,transparent,rgba(90,138,90,.35),transparent);
+  }
+  .season-banner.sky::before,.season-banner.sky::after {
+    background:linear-gradient(90deg,transparent,rgba(74,138,190,.35),transparent);
+  }
+  .season-banner-text {
+    font-family:'Shippori Mincho',serif;
+    font-size:.65rem;
+    letter-spacing:.22em;
+    white-space:nowrap;
+  }
+  .season-banner.lavender .season-banner-text { color:rgba(139,107,174,.7); }
+  .season-banner.green   .season-banner-text { color:rgba(74,120,74,.7); }
+  .season-banner.sky     .season-banner-text { color:rgba(58,120,168,.7); }
+
   /* FLIGHT */
-  .flight-section { background:linear-gradient(135deg,#EDE8F5,#E8F2F8);padding:1.5rem;border-bottom:1px solid rgba(139,123,174,.2); }
+  .flight-section { background:linear-gradient(160deg,#EEE8F8,#E6F0F8,#EAF4EE);padding:1.5rem;border-bottom:1px solid rgba(139,123,174,.15); }
   .section-eyebrow { font-family:'Playfair Display',serif;font-style:italic;font-size:.7rem;color:var(--lavender);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem; }
   .flight-cards { display:flex;flex-direction:column;gap:.8rem; }
   .flight-card { background:white;border-radius:16px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(139,123,174,.12);display:flex;align-items:center;gap:1rem; }
@@ -255,8 +357,12 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="cloud cloud-1"></div><div class="cloud cloud-2"></div><div class="cloud cloud-3"></div>
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
   <div class="sun"></div>
+  <div class="hero-hills"></div>
+  <div class="hero-lavender"></div>
   <div class="hero-content">
     <div class="hero-label">Summer Journey in Hokkaido</div>
     <h1 class="hero-title">北海道<br><span>夏日之旅</span></h1>
@@ -399,7 +505,7 @@
 
   </div>
 </section>
-<div class="day-divider"></div>
+<div class="season-banner sky"><span class="season-banner-text">⛰　大雪山　層雲峽　黑岳纜車　⛰</span></div>
 
 <!-- ══ DAY 2 ══ -->
 <section id="day2" class="day-section day-2" style="scroll-margin-top:0px">
@@ -602,7 +708,7 @@
 
   </div>
 </section>
-<div class="day-divider"></div>
+<div class="season-banner lavender"><span class="season-banner-text">💜　美瑛　富良野　薰衣草花海　💜</span></div>
 
 <!-- ══ DAY 3 ══ -->
 <section id="day3" class="day-section day-3" style="scroll-margin-top:0px">
@@ -801,7 +907,7 @@
 
   </div>
 </section>
-<div class="day-divider"></div>
+<div class="season-banner sky"><span class="season-banner-text">⛵　小樽運河　三角市場　玻璃工藝　⛵</span></div>
 
 <!-- ══ DAY 4 ══ -->
 <section id="day4" class="day-section day-4" style="scroll-margin-top:0px">
@@ -967,7 +1073,7 @@
 
   </div>
 </section>
-<div class="day-divider"></div>
+<div class="season-banner green"><span class="season-banner-text">🌿　札幌神宮　大通公園　薄野　🌿</span></div>
 
 <!-- ══ DAY 5 ══ -->
 <section id="day5" class="day-section day-5" style="scroll-margin-top:0px">
@@ -1089,7 +1195,7 @@
 
   </div>
 </section>
-<div class="day-divider"></div>
+<div class="season-banner lavender"><span class="season-banner-text">✈　新千歲機場　再見北海道　✈</span></div>
 
 <!-- ══ DAY 6 ══ -->
 <section id="day6" class="day-section day-6" style="scroll-margin-top:0px">
