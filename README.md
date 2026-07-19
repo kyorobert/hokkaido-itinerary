@@ -10,7 +10,8 @@
 ├─ css/
 │  └─ style.css
 ├─ js/
-│  └─ main.js
+│  ├─ main.js
+│  └─ bgm.js
 ├─ README.md
 ├─ DELIVERY_REPORT.md
 └─ index_before-redesign.html
@@ -22,6 +23,12 @@
 
 - 直接雙擊 `index.html` 即可離線瀏覽；Google Fonts 需要網路連線才會載入，未連線時會使用系統字體。
 - 或在此資料夾執行 `npx serve`，再開啟終端機顯示的本機網址。
+
+## 背景音樂
+
+右下方音符按鈕可播放或停止背景配樂「薰衣草微風」。Tone.js（cdnjs 14.8.49）只會在第一次點擊時載入，不影響頁面初次載入速度。網站會記住上次的開關狀態，但絕不自動播放；若上次為播放狀態，只會顯示提示光圈等待使用者再次點擊。
+
+iPhone 實體靜音鍵開啟時可能沒有聲音，這是 iOS 系統限制；關閉靜音即可播放。
 
 ## 部署到 GitHub Pages
 

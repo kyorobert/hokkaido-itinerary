@@ -566,3 +566,30 @@ img,svg { max-width:100%; }
   .reveal-ready { opacity:1 !important; transform:none !important; }
   .cloud,.sun,.hero-hills,.hero-lavender { transform:none !important; }
 }
+
+/* ── 背景音樂鈕 ── */
+.bgm-btn {
+  position:fixed; z-index:39;
+  right:14px; bottom:88px;
+  width:44px; height:44px; border-radius:50%;
+  border:1.5px solid rgba(126,88,184,.35);
+  background:#fff; color:#7E58B8;
+  font-size:1.05rem; cursor:pointer;
+  box-shadow:0 4px 14px rgba(60,40,90,.18);
+  display:flex; align-items:center; justify-content:center;
+}
+@media (min-width:430px) {
+  .bgm-btn { right:calc(50% - 215px + 14px); }
+}
+.bgm-btn.is-on {
+  background:linear-gradient(135deg,#7E58B8,#A98BD6); color:#fff;
+  animation:bgmPulse 2.6s ease-in-out infinite;
+}
+.bgm-btn.is-busy { opacity:.6; pointer-events:none; }
+.bgm-btn.had-on:not(.is-on)::after {
+  content:''; position:absolute; inset:-4px; border-radius:50%;
+  border:2px solid rgba(126,88,184,.45); animation:bgmHint 2s ease-out infinite;
+}
+@keyframes bgmPulse { 0%,100%{box-shadow:0 4px 14px rgba(126,88,184,.25)} 50%{box-shadow:0 4px 22px rgba(126,88,184,.5)} }
+@keyframes bgmHint { from{transform:scale(.9);opacity:.8} to{transform:scale(1.25);opacity:0} }
+@media (prefers-reduced-motion:reduce) { .bgm-btn,.bgm-btn::after { animation:none !important; } }
