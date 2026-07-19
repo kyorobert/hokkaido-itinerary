@@ -39,3 +39,19 @@
 - ✅ **內容防呆**：`index.html` SHA-256 修改前後皆為 `2575CDA9153A62CAA2BE59D9AC3CFA5C404A363DD90C250F2F9FBE06C1307587`；67 個 `<a href>` 保持原樣；JavaScript 語法檢查通過。
 - ✅ **375px／430px 防溢位回歸**：本次未變更任何寬度或內容規則；`body` 的 430px 上限、`border-box` 與 `overflow-x:hidden` 防線均保留。
 - ⚠️ **390×844／430px 瀏覽器互動驗收**：已嘗試啟動本機預覽，但本次工作環境沒有可用的內建瀏覽器執行個體，因此無法執行實際捲動、FAB／TOC 點擊與像素幾何量測。上述結果為程式化規則與不變性驗收；待瀏覽器執行個體可用時仍需補做視覺互動回歸。
+
+---
+
+## 修正驗收附錄：時間軸圖示類別配色
+
+驗收日期：2026-07-19
+
+- ✅ **移除按天配色**：`.day-1`–`.day-6` 搭配 `.tl-icon` 的背景與線條色規則數量為 0；天數識別仍由 day-strip、sticky 標題與進度條負責。
+- ✅ **七類配色完整**：transport、food、stay、sightseeing、optional、shopping、activity 的 `:has()` 規則皆存在，並保留中性 fallback `#F3F1EC / #6B6B6B`。
+- ✅ **同類跨日一致**：類別顏色只由 `.tl-item:has(.tag-*)` 決定，不含任何 `.day-*` 條件；例如各日住宿均為 `#F5F0FF / #7E58B8`。
+- ✅ **同日類別可辨識**：Day 1 含交通／餐飲／住宿三色；Day 2 含交通／餐飲／住宿／景點／購物／活動六色；其餘各日亦依既有 tag 套用固定類別色。
+- ✅ **與 tag 同色系**：七類背景色均與對應 tag 完全相同；transport、food、stay、shopping 的文字色亦完全相同，sightseeing、optional、activity 使用同色相的加深版本。
+- ✅ **檔案不變性**：`index.html` SHA-256 維持 `2575CDA9153A62CAA2BE59D9AC3CFA5C404A363DD90C250F2F9FBE06C1307587`；`js/main.js` SHA-256 維持 `2426A4AD1A3DE21BE7B85560D96A2902A4B92562B6100E7E5218FF26507DDE00`；67 個行程連結未變。
+- ✅ **行為與版面回歸**：本次 CSS 只替換背景色與文字色，未修改尺寸、定位、overflow、sticky、scroll-margin、reveal 或 transition 規則，因此 375px／430px 版面與既有互動邏輯不受影響。
+- ✅ **瀏覽器策略**：採用原生 `:has()` 與中性 CSS fallback，不新增 JavaScript fallback。
+- ⚠️ **視覺瀏覽器抽查**：已嘗試啟動本機預覽，但本次工作環境仍沒有可用的內建瀏覽器執行個體；配色與不變性已以程式化方式逐類驗證，實際像素畫面待瀏覽器執行個體可用時補測。

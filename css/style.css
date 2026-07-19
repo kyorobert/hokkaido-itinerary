@@ -170,9 +170,15 @@
 
   .tl-item { display:flex;gap:1rem;margin-bottom:1rem;position:relative; }
   .tl-icon { width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:var(--fs-body);flex-shrink:0;position:relative;z-index:1;box-shadow:0 2px 8px rgba(0,0,0,.08);border:2px solid white; }
-  .day-1 .tl-icon{background:#EBF5FF} .day-2 .tl-icon{background:#F0F8EE}
-  .day-3 .tl-icon{background:#F5F0FF} .day-4 .tl-icon{background:#F0FCFC}
-  .day-5 .tl-icon{background:#FFF8EE} .day-6 .tl-icon{background:#FFF3EE}
+  /* 圖示顏色 = 類別，與 tag 同色系呼應 */
+  .tl-icon { background:#F3F1EC; color:#6B6B6B; }
+  .tl-item:has(.tag-transport)   .tl-icon { background:#EBF5FF; color:#3E86C8; }
+  .tl-item:has(.tag-food)        .tl-icon { background:#FFF0E8; color:#C4652A; }
+  .tl-item:has(.tag-stay)        .tl-icon { background:#F5F0FF; color:#7E58B8; }
+  .tl-item:has(.tag-sightseeing) .tl-icon { background:#F0F8EE; color:#3F7A46; }
+  .tl-item:has(.tag-optional)    .tl-icon { background:#FFFBEE; color:#B07E10; }
+  .tl-item:has(.tag-shopping)    .tl-icon { background:#FFF0F5; color:#BE4A7A; }
+  .tl-item:has(.tag-activity)    .tl-icon { background:#F0FCFC; color:#2F8F8F; }
   .tl-body { flex:1;padding-top:.35rem; }
   .tl-label { font-size:var(--fs-micro);letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.5;margin-bottom:.15rem; }
   .tl-name { font-family:'Zen Maru Gothic','Noto Sans TC',sans-serif;font-size:var(--fs-body);font-weight:700;line-height:1.3;margin-bottom:.25rem; }
@@ -472,9 +478,6 @@ img,svg { max-width:100%; }
 
 /* Unified line icons */
 .tl-icon svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-.day-1 .tl-icon { color:var(--day-1); } .day-2 .tl-icon { color:var(--day-2); }
-.day-3 .tl-icon { color:var(--day-3); } .day-4 .tl-icon { color:var(--day-4); }
-.day-5 .tl-icon { color:#9B6B00; } .day-6 .tl-icon { color:#B74E28; }
 .tl-tag { letter-spacing:0; }
 
 /* Extracted semantic classes */
