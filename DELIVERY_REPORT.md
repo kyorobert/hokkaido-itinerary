@@ -26,3 +26,16 @@
 ## 結論
 
 ✅ 全部程式化檢核通過，可直接本地開啟或部署至 GitHub Pages。
+
+---
+
+## 修復驗收附錄：sticky／揭示節奏／跳轉貼齊
+
+驗收日期：2026-07-19
+
+- ✅ **Fix A — sticky 恢復**：已移除 `html` 的 `overflow-x:hidden`；`body` 保留既有橫向防溢位。掃描確認 `html` 與 sticky 祖先鏈沒有 `hidden / auto / scroll` overflow，`.today-banner` 與 `.day-header` 的 sticky 宣告仍存在。
+- ✅ **Fix B — 揭示預載**：目標已縮減為 `.tl-item, .season-banner`；延遲為 `0 / 60 / 120ms`；Observer 使用 `threshold:0` 與正向 `rootMargin: 0px 0px 12% 0px`；transition 已縮短為 `.4s`，減少動態模式維持停用。
+- ✅ **Fix C — 動態貼齊**：`.day-section` 與 `.toc` 均改用 `var(--sticky-offset, 0px)`；banner 狀態變更、初始化及 rAF 節流的 resize／scroll 更新均會同步實際高度。
+- ✅ **內容防呆**：`index.html` SHA-256 修改前後皆為 `2575CDA9153A62CAA2BE59D9AC3CFA5C404A363DD90C250F2F9FBE06C1307587`；67 個 `<a href>` 保持原樣；JavaScript 語法檢查通過。
+- ✅ **375px／430px 防溢位回歸**：本次未變更任何寬度或內容規則；`body` 的 430px 上限、`border-box` 與 `overflow-x:hidden` 防線均保留。
+- ⚠️ **390×844／430px 瀏覽器互動驗收**：已嘗試啟動本機預覽，但本次工作環境沒有可用的內建瀏覽器執行個體，因此無法執行實際捲動、FAB／TOC 點擊與像素幾何量測。上述結果為程式化規則與不變性驗收；待瀏覽器執行個體可用時仍需補做視覺互動回歸。

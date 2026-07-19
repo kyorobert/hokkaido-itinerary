@@ -36,6 +36,12 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
     });
   }
 
+  function syncStickyOffset() {
+    const banner = document.getElementById('todayBanner');
+    const h = (!banner || banner.hidden) ? 0 : banner.offsetHeight;
+    document.documentElement.style.setProperty('--sticky-offset', h + 'px');
+  }
+
   function applyToday(dayNum) {
     currentToday = dayNum;
     const banner = document.getElementById('todayBanner');
@@ -82,6 +88,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
       document.getElementById('tbMain').textContent = '北海道の夏，辛苦了！';
       document.getElementById('tbJump').textContent = '重溫 ↑';
     }
+    syncStickyOffset();
   }
 
   function jumpToToday() {
@@ -126,14 +133,14 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
   const dayColors = ['#3E86C8','#4E9455','#7E58B8','#3B9C9C','#D19A1F','#E87F4F'];
 
   function setupReveal() {
-    const revealItems = document.querySelectorAll('.tl-item, .meal-block, .season-banner');
+    const revealItems = document.querySelectorAll('.tl-item, .season-banner');
     if (reduceMotion.matches || !('IntersectionObserver' in window)) {
       revealItems.forEach(item => item.classList.add('is-revealed'));
       return;
     }
     revealItems.forEach((item, index) => {
       item.classList.add('reveal-ready');
-      item.style.setProperty('--reveal-delay', ((index % 5) * 70) + 'ms');
+      item.style.setProperty('--reveal-delay', ((index % 3) * 60) + 'ms');
     });
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -141,7 +148,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
         entry.target.classList.add('is-revealed');
         observer.unobserve(entry.target);
       });
-    }, { threshold:.12, rootMargin:'0px 0px -7% 0px' });
+    }, { threshold:0, rootMargin:'0px 0px 12% 0px' });
     revealItems.forEach(item => observer.observe(item));
   }
 
@@ -182,6 +189,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
   function updateScrollUI() {
     scrollQueued = false;
+    syncStickyOffset();
     const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
     progress.style.transform = 'scaleX(' + Math.min(1, scrollY / max) + ')';
     let current = 0;
@@ -210,4 +218,5 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
   setupReveal();
   setupMealToggles();
+  syncStickyOffset();
   updateScrollUI();
