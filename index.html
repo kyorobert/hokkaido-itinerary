@@ -429,19 +429,247 @@
   .yt-btn:hover { background: #FFE0E0; border-color: #CC0000; }
   .yt-btn:active { transform: scale(.95); }
   .yt-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+  /* 2026 summer notebook redesign */
+  :root {
+    --sky: #CFEAF5;
+    --hill: #7BAE6E;
+    --sunshine: #F4C95D;
+    --cream: #FBF7EF;
+    --ink: #26384A;
+    --muted: #536477;
+    --line: #DCE5E4;
+    --reading-progress: 0%;
+  }
+  body {
+    max-width:none;
+    width:100%;
+    background:var(--cream);
+    color:var(--ink);
+    font-size:16px;
+    line-height:1.65;
+  }
+  a, button, summary { -webkit-tap-highlight-color:transparent; }
+  a:focus-visible, button:focus-visible, summary:focus-visible {
+    outline:3px solid #246B8E;
+    outline-offset:3px;
+  }
+  .today-banner {
+    position:relative;
+    top:auto;
+    min-height:52px;
+    padding:.65rem max(1rem, env(safe-area-inset-left));
+    background:#315E67 !important;
+  }
+  .hero {
+    min-height:min(78svh,700px);
+    padding:clamp(2rem,5vw,4rem) max(1.25rem,calc((100vw - 1120px)/2)) clamp(3rem,8vw,6rem);
+    background:linear-gradient(180deg,#BCE2F1 0%,#D7EEF5 42%,#B8D8B2 68%,#88B27A 87%,#9B8BC1 100%);
+  }
+  .hero::before {
+    content:'';
+    position:absolute;
+    inset:auto 0 0;
+    height:22%;
+    background:repeating-linear-gradient(105deg,rgba(255,255,255,.12) 0 2px,transparent 2px 18px);
+    opacity:.5;
+  }
+  .hero-content { max-width:1120px; width:100%; }
+  .hero-title { font-size:clamp(2.75rem,5vw,3.5rem); letter-spacing:0; max-width:620px; }
+  .hero-title span { font-size:clamp(1.2rem,2.3vw,1.65rem); letter-spacing:.12em; }
+  .hero-label { font-size:.82rem; }
+  .hero-dates { font-size:.88rem; min-height:44px; }
+  .sun { width:94px; height:94px; right:12%; }
+  .layout-shell {
+    width:min(1180px,calc(100% - 48px));
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(280px,330px) minmax(0,1fr);
+    gap:clamp(2rem,4vw,4rem);
+    align-items:start;
+    padding:3rem 0 4rem;
+  }
+  .trip-sidebar { position:sticky; top:1.25rem; align-self:start; }
+  .trip-content { min-width:0; }
+  .toc { padding:0; background:transparent; border:0; }
+  .toc-title, .section-eyebrow { color:#6E5C99; font-size:.78rem; }
+  .toc-grid { grid-template-columns:1fr; gap:.55rem; }
+  .toc-item {
+    min-height:56px;
+    width:100%;
+    border-radius:8px;
+    background:#fff !important;
+    box-shadow:0 3px 14px rgba(38,56,74,.06);
+  }
+  .toc-item.is-active { border-color:currentColor; box-shadow:0 4px 18px rgba(38,56,74,.14); }
+  .toc-day { font-size:.75rem; }
+  .toc-label { font-size:.92rem; }
+  .route-card, .progress-card {
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:1rem;
+    margin-top:1rem;
+    box-shadow:0 3px 14px rgba(38,56,74,.05);
+  }
+  .sidebar-kicker { font-size:.75rem; font-weight:700; color:#6E5C99; margin-bottom:.65rem; }
+  .route-list { display:flex; flex-wrap:wrap; gap:.35rem .2rem; align-items:center; }
+  .route-list a { color:var(--ink); font-size:.8rem; font-weight:700; text-decoration:none; min-height:34px; display:inline-flex; align-items:center; }
+  .route-list span { color:#7BAE6E; padding:0 .1rem; }
+  .progress-row { display:flex; justify-content:space-between; gap:1rem; font-size:.78rem; font-weight:700; }
+  .progress-track { height:4px; margin-top:.65rem; background:#E9EEEA; border-radius:4px; overflow:hidden; }
+  .progress-bar { width:0; height:100%; background:#7BAE6E; transition:width .25s ease; }
+  .flight-section {
+    padding:1.4rem;
+    margin-bottom:1.5rem;
+    border:1px solid #D5E4E8;
+    border-radius:8px;
+    background:#EFF7F4;
+  }
+  .flight-cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .flight-card { border-radius:8px; padding:1rem; }
+  .flight-time { color:var(--muted); font-size:.86rem; line-height:1.55; }
+  .day-section {
+    background:rgba(255,255,255,.8);
+    border:1px solid var(--line);
+    border-radius:8px;
+    margin-bottom:1.5rem;
+    overflow:clip;
+    scroll-margin-top:20px !important;
+  }
+  .day-header { position:relative; top:auto; padding:1.2rem 1.5rem; align-items:center; }
+  .day-number { font-size:1.05rem; opacity:.68; min-width:70px; }
+  .day-title { font-size:clamp(1.65rem,3vw,2rem); letter-spacing:0; }
+  .day-date { font-size:.9rem; opacity:.75; }
+  .timeline { padding:1.25rem 1.5rem 1.5rem; }
+  .timeline::before { left:2.55rem; }
+  .tl-item { gap:1rem; margin-bottom:1.25rem; }
+  .tl-icon { width:40px; height:40px; font-size:1rem; }
+  .tl-body {
+    min-width:0;
+    padding:.9rem 1rem;
+    background:#fff;
+    border:1px solid #E7ECEB;
+    border-radius:8px;
+    box-shadow:0 2px 10px rgba(38,56,74,.045);
+    transition:transform .24s ease, box-shadow .24s ease;
+  }
+  .tl-item:hover .tl-body { transform:translateY(-2px); box-shadow:0 8px 20px rgba(38,56,74,.1); }
+  .tl-label { font-size:.78rem; opacity:.72; }
+  .tl-name { font-size:1.125rem; line-height:1.45; }
+  .tl-desc { color:var(--muted); font-size:.96rem; line-height:1.7; }
+  .tl-tag { font-size:.76rem; padding:.2rem .55rem; }
+  .map-btn, .yt-btn, .book-badge, .meal-map {
+    min-height:44px;
+    padding:.55rem .8rem;
+    border-radius:8px;
+    font-size:.82rem;
+    justify-content:center;
+  }
+  .map-btn svg, .meal-map svg { width:15px; height:15px; }
+  .meal-block { border:1px solid #E4E9E7; border-radius:8px; box-shadow:none; }
+  .meal-block-title { color:var(--muted); font-size:.8rem; }
+  .meal-option { gap:.75rem; padding:.75rem 0; }
+  .meal-restaurant { font-size:1rem; }
+  .meal-detail { color:var(--muted); font-size:.9rem; line-height:1.6; }
+  .collapse-toggle {
+    width:100%; min-height:44px; margin:-.25rem 0 .35rem; padding:.35rem .2rem;
+    border:0; border-bottom:1px solid #E9EEEC; background:transparent; color:var(--ink);
+    display:flex; align-items:center; justify-content:space-between; font:700 .82rem 'Noto Sans TC',sans-serif; cursor:pointer;
+  }
+  .collapse-toggle::after { content:'−'; font-size:1.1rem; }
+  .meal-block.is-collapsed .collapse-toggle::after { content:'＋'; }
+  .meal-block.is-collapsed > :not(.collapse-toggle) { display:none; }
+  .transport-pill { min-height:38px; padding:.45rem .8rem; font-size:.82rem; white-space:normal; text-align:center; line-height:1.45; }
+  .season-banner { margin:0 0 1.5rem; padding:.7rem .5rem; }
+  .season-banner-text { font-size:.75rem; letter-spacing:.08em; white-space:normal; text-align:center; }
+  .fixed-card { border:2px solid #B48A2C; background:#FFF9E9; }
+  .fixed-card .tl-label { color:#6D5417; opacity:1; font-weight:700; }
+  .reservation-panel { margin:.65rem 0 .25rem; padding:.85rem; border:1px solid #D8BE78; border-radius:8px; background:#FFFCF3; }
+  .reservation-top { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.5rem; }
+  .reservation-status { display:inline-flex; align-items:center; min-height:32px; padding:.25rem .65rem; border-radius:6px; background:#E8F2E5; color:#285B2D; font-size:.8rem; font-weight:700; }
+  .reservation-time { font-size:1.05rem; color:#5C4512; font-weight:700; }
+  .reservation-reminder { margin-top:.6rem; color:#4E5964; font-size:.9rem; line-height:1.65; }
+  .deadline-row .transport-pill { color:#7A391F; background:#FFF0E7; border:1px solid #E8B69D; font-weight:700; }
+  .waterfall-group { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; margin-top:.5rem; }
+  .waterfall-card { padding:.85rem; border:1px solid #D6E7EA; border-radius:8px; background:#F7FBFC; }
+  .waterfall-card h3 { font:700 1rem 'Zen Maru Gothic','Noto Sans TC',sans-serif; margin-bottom:.2rem; }
+  .waterfall-card p { color:var(--muted); font-size:.9rem; line-height:1.6; }
+  .mobile-day-nav { display:none; }
+  .fab-wrap, .fab-backdrop { display:none; }
+  .trip-footer { padding:3rem max(1.5rem,calc((100vw - 1120px)/2)); }
+
+  @media (max-width: 820px) {
+    body { padding-bottom:calc(70px + env(safe-area-inset-bottom)); }
+    .hero { min-height:68svh; padding:2rem 1.25rem 3.5rem; }
+    .hero-scroll { bottom:1rem; }
+    .layout-shell { width:100%; display:block; padding:0 0 1rem; }
+    .trip-sidebar { position:relative; top:auto; padding:1.25rem 1rem; }
+    .toc-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .toc-item { min-height:64px; padding:.5rem; }
+    .toc-label { font-size:.78rem; }
+    .route-card, .progress-card { display:none; }
+    .trip-content { padding:0 1rem; }
+    .flight-section { margin-bottom:1rem; }
+    .day-section { margin-bottom:1rem; }
+    .season-banner { margin-bottom:1rem; }
+    .mobile-day-nav {
+      position:fixed; z-index:70; left:0; right:0; bottom:0;
+      display:flex; gap:.35rem; overflow-x:auto; padding:.5rem max(.75rem,env(safe-area-inset-left)) calc(.5rem + env(safe-area-inset-bottom));
+      background:rgba(251,247,239,.96); border-top:1px solid #D7DEDC; backdrop-filter:blur(14px); scrollbar-width:none;
+    }
+    .mobile-day-nav::before {
+      content:''; position:absolute; left:0; top:0; width:var(--reading-progress); height:3px; background:#7BAE6E;
+    }
+    .mobile-day-nav a {
+      flex:1 0 48px; min-width:48px; min-height:46px; display:flex; align-items:center; justify-content:center;
+      color:var(--ink); text-decoration:none; font-weight:700; font-size:.78rem; border:1px solid #D7DEDC; border-radius:8px; background:#fff;
+    }
+    .mobile-day-nav a.is-active { color:#fff; background:#315E67; border-color:#315E67; }
+  }
+  @media (max-width: 560px) {
+    .today-banner { padding:.55rem .85rem; }
+    .today-banner-main { font-size:.82rem; }
+    .today-banner-jump { display:none; }
+    .hero-title { font-size:2.75rem; }
+    .hero-dates { display:flex; width:100%; border-radius:8px; padding:.55rem .75rem; font-size:.78rem; }
+    .toc-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .flight-cards { grid-template-columns:1fr; }
+    .flight-section { padding:1rem; }
+    .day-header { padding:1rem; align-items:flex-start; }
+    .day-number { min-width:58px; font-size:.9rem; padding-top:.25rem; }
+    .day-title { font-size:1.6rem; }
+    .timeline { padding:1rem .85rem 1.2rem; }
+    .timeline::before { left:2.05rem; }
+    .tl-item { gap:.65rem; }
+    .tl-icon { width:34px; height:34px; font-size:.88rem; }
+    .tl-body { padding:.8rem; }
+    .tl-name { font-size:1.08rem; }
+    .tl-desc { font-size:.95rem; }
+    .transport-row { gap:.35rem; }
+    .transport-line { min-width:10px; }
+    .waterfall-group { grid-template-columns:1fr; }
+    .reservation-top { align-items:flex-start; flex-direction:column; }
+    .season-banner-text { font-size:.7rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+    *, *::before, *::after { animation:none !important; transition-duration:.01ms !important; }
+    .tl-item:hover .tl-body { transform:none; }
+  }
 </style>
 </head>
 <body>
 
 <!-- TODAY BANNER (auto-populated by JS; hidden until date matched) -->
-<div id="todayBanner" class="today-banner" style="display:none" onclick="jumpToToday()">
+<button type="button" id="todayBanner" class="today-banner" style="display:none;width:100%;border:0;text-align:left" onclick="jumpToToday()" aria-label="查看旅程日期狀態">
   <span class="today-banner-icon" id="tbIcon">📍</span>
   <div class="today-banner-text">
     <div class="today-banner-label" id="tbLabel"></div>
     <div class="today-banner-main" id="tbMain"></div>
   </div>
   <span class="today-banner-jump" id="tbJump"></span>
-</div>
+</button>
 
 <!-- ── MAP PIN SVG SYMBOL (reused inline) ── -->
 <svg style="display:none">
@@ -482,41 +710,60 @@
 </section>
 
 <!-- TOC -->
-<nav class="toc" id="tocSection">
+<div class="layout-shell">
+<aside class="trip-sidebar" aria-label="旅程導覽">
+<nav class="toc" id="tocSection" aria-label="每日行程">
   <div class="toc-title">✦ 行程總覽</div>
   <div class="toc-grid">
-    <div class="toc-item d1" onclick="document.getElementById('day1').scrollIntoView({behavior:'smooth',block:'start'}); return false;" style="cursor:pointer">
+    <a class="toc-item d1" href="#day1">
       <div class="toc-dot"></div>
       <div class="toc-text"><div class="toc-day">第一天 · 8/16</div><div class="toc-label">直衝旭川</div></div>
       <span class="toc-arrow">›</span>
-    </div>
-    <div class="toc-item d2" onclick="document.getElementById('day2').scrollIntoView({behavior:'smooth',block:'start'}); return false;" style="cursor:pointer">
+    </a>
+    <a class="toc-item d2" href="#day2">
       <div class="toc-dot"></div>
       <div class="toc-text"><div class="toc-day">第二天 · 8/17</div><div class="toc-label">大雪山秘境</div></div>
       <span class="toc-arrow">›</span>
-    </div>
-    <div class="toc-item d3" onclick="document.getElementById('day3').scrollIntoView({behavior:'smooth',block:'start'}); return false;" style="cursor:pointer">
+    </a>
+    <a class="toc-item d3" href="#day3">
       <div class="toc-dot"></div>
       <div class="toc-text"><div class="toc-day">第三天 · 8/18</div><div class="toc-label">一路南下看花海</div></div>
       <span class="toc-arrow">›</span>
-    </div>
-    <div class="toc-item d4" onclick="document.getElementById('day4').scrollIntoView({behavior:'smooth',block:'start'}); return false;" style="cursor:pointer">
+    </a>
+    <a class="toc-item d4" href="#day4">
       <div class="toc-dot"></div>
       <div class="toc-text"><div class="toc-day">第四天 · 8/19</div><div class="toc-label">小樽一日遊</div></div>
       <span class="toc-arrow">›</span>
-    </div>
-    <div class="toc-item d5" onclick="document.getElementById('day5').scrollIntoView({behavior:'smooth',block:'start'}); return false;" style="cursor:pointer">
+    </a>
+    <a class="toc-item d5" href="#day5">
       <div class="toc-dot"></div>
       <div class="toc-text"><div class="toc-day">第五天 · 8/20</div><div class="toc-label">札幌市區散策</div></div>
       <span class="toc-arrow">›</span>
-    </div>
-    <div class="toc-item d6" onclick="document.getElementById('day6').scrollIntoView({behavior:'smooth',block:'start'}); return false;" style="cursor:pointer">
+    </a>
+    <a class="toc-item d6" href="#day6">
       <div class="toc-dot"></div>
       <div class="toc-text"><div class="toc-day">第六天 · 8/21</div><div class="toc-label">回台灣</div></div>
       <span class="toc-arrow">›</span>
-    </div>
+    </a>
   </div>
 </nav>
+<div class="route-card">
+  <div class="sidebar-kicker">旅行路線</div>
+  <div class="route-list" aria-label="新千歲至小樽路線">
+    <a href="#day1">新千歲</a><span aria-hidden="true">→</span>
+    <a href="#day1">旭川</a><span aria-hidden="true">→</span>
+    <a href="#day2">大雪山</a><span aria-hidden="true">→</span>
+    <a href="#day3">美瑛・富良野</a><span aria-hidden="true">→</span>
+    <a href="#day5">札幌</a><span aria-hidden="true">→</span>
+    <a href="#day4">小樽</a>
+  </div>
+</div>
+<div class="progress-card" aria-live="polite">
+  <div class="progress-row"><span id="progressLabel">目前閱讀：第一天</span><span id="progressPercent">0%</span></div>
+  <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+</div>
+</aside>
+<main class="trip-content">
 
 <!-- FLIGHT INFO -->
 <section class="flight-section">
@@ -540,7 +787,7 @@
   <div class="day-strip"></div>
   <div class="day-header">
     <div class="day-number">第一天</div>
-    <div class="day-info"><div class="day-title">直衝旭川</div><div class="day-date">8月16日（日）</div></div>
+    <div class="day-info"><h2 class="day-title">直衝旭川</h2><div class="day-date">8月16日（日）</div></div>
   </div>
   <div class="timeline">
 
@@ -548,20 +795,20 @@
       <div class="tl-icon">✈️</div>
       <div class="tl-body">
         <div class="tl-label">起點</div>
-        <div class="tl-name">新千歲機場</div>
+        <h3 class="tl-name">新千歲機場</h3>
         <div class="tl-desc">北海道最大門戶機場，商場很好逛，有伴手禮、美食街、甜點店。適合等待另一組家人抵達。</div>
         <div class="tl-tags">
           <span class="tl-tag tag-transport">🏛 機場</span>
         </div>
         <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.1rem">
-          <a class="map-btn" href="https://maps.google.com/?q=新千歲機場" target="_blank">
+          <a class="map-btn" href="https://maps.google.com/?q=新千歲機場" target="_blank" rel="noopener noreferrer">
             <svg><use href="#pin"/></svg>查看地圖
           </a>
-          <a class="map-btn" href="https://www.hokkaido-airports.com/zh-CHT/new-chitose/floormap/#anchor-tabs" target="_blank">
+          <a class="map-btn" href="https://www.hokkaido-airports.com/zh-CHT/new-chitose/floormap/#anchor-tabs" target="_blank" rel="noopener noreferrer">
             <svg><use href="#map"/></svg>機場平面圖
           </a>
         </div>
-        <a class="yt-btn" href="https://youtu.be/i24RvubQBRs?si=WTt8yfie1beq80f-" target="_blank">
+        <a class="yt-btn" href="https://youtu.be/i24RvubQBRs?si=WTt8yfie1beq80f-" target="_blank" rel="noopener noreferrer">
           <svg><use href="#yt"/></svg>機場逛街攻略影片
         </a>
       </div>
@@ -577,7 +824,7 @@
       <div class="tl-icon">🚌</div>
       <div class="tl-body">
         <div class="tl-label">交通</div>
-        <div class="tl-name">高速巴士「旭川號」</div>
+        <h3 class="tl-name">高速巴士「旭川號」</h3>
 
         <!-- Booking card -->
         <div style="background:linear-gradient(135deg,#EBF4FF,#F0EDFA);border:1.5px solid rgba(74,138,190,.2);border-radius:14px;padding:.85rem 1rem;margin-top:.5rem">
@@ -616,13 +863,13 @@
 
         <!-- Action buttons -->
         <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.55rem">
-          <a class="map-btn" href="https://maps.app.goo.gl/WYGS5qFjVgGRGdNa7" target="_blank">
+          <a class="map-btn" href="https://maps.app.goo.gl/WYGS5qFjVgGRGdNa7" target="_blank" rel="noopener noreferrer">
             <svg><use href="#pin"/></svg>上車位置地圖
           </a>
-          <a class="map-btn" href="https://www.hokkaido-airports.com/zh-CHT/new-chitose/access/bus/#time1" target="_blank">
+          <a class="map-btn" href="https://www.hokkaido-airports.com/zh-CHT/new-chitose/access/bus/#time1" target="_blank" rel="noopener noreferrer">
             <svg><use href="#info"/></svg>機場巴士資訊
           </a>
-          <a class="map-btn" href="https://willer-travel.com/tw/bus_search/hokkaido/new_chitose_airport/hokkaido/asahikawa/" target="_blank">
+          <a class="map-btn" href="https://willer-travel.com/tw/bus_search/hokkaido/new_chitose_airport/hokkaido/asahikawa/" target="_blank" rel="noopener noreferrer">
             <svg><use href="#ticket"/></svg>WILLER 訂票
           </a>
         </div>
@@ -637,7 +884,7 @@
       <div class="tl-icon">🍜</div>
       <div class="tl-body">
         <div class="tl-label">晚餐候選</div>
-        <div class="tl-name">旭川夜晚美食</div>
+        <h3 class="tl-name">旭川夜晚美食</h3>
         <div class="meal-block">
           <div class="meal-block-title">二選一</div>
           <div class="meal-option">
@@ -645,7 +892,7 @@
             <div class="meal-body">
               <div class="meal-restaurant">旭川はれて屋台村</div>
               <div class="meal-detail">多間小型餐飲集結，熱鬧有趣，體驗旭川夜晚氣氛。距車站步行約 15–20 分鐘。</div>
-              <a class="meal-map" href="https://maps.app.goo.gl/Ps1cyAJ1dnpgLYpQ9" target="_blank" style="color:#4A8ABE">
+              <a class="meal-map" href="https://maps.app.goo.gl/Ps1cyAJ1dnpgLYpQ9" target="_blank" rel="noopener noreferrer" style="color:#4A8ABE">
                 <svg><use href="#pin"/></svg>查看地圖
               </a>
             </div>
@@ -655,7 +902,7 @@
             <div class="meal-body">
               <div class="meal-restaurant">山頭火 旭川本店 ⭐</div>
               <div class="meal-detail">知名旭川拉麵本店，距離車站近，適合第一晚輕鬆吃。</div>
-              <a class="meal-map" href="https://maps.app.goo.gl/73UQR8vBEJwxSboW7" target="_blank" style="color:#C4652A">
+              <a class="meal-map" href="https://maps.app.goo.gl/73UQR8vBEJwxSboW7" target="_blank" rel="noopener noreferrer" style="color:#C4652A">
                 <svg><use href="#pin"/></svg>查看地圖
               </a>
             </div>
@@ -669,10 +916,10 @@
       <div class="tl-icon">🏨</div>
       <div class="tl-body">
         <div class="tl-label">入住</div>
-        <div class="tl-name">Y's Hotel 旭川站前</div>
+        <h3 class="tl-name">Y's Hotel 旭川站前</h3>
         <div class="tl-desc">位於旭川站前，交通方便，隔天租車、逛 AEON、吃晚餐都很順。</div>
         <div class="tl-tags"><span class="tl-tag tag-stay">🛏 住宿</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=Y's+Hotel+旭川站前" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=Y's+Hotel+旭川站前" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -687,7 +934,7 @@
   <div class="day-strip"></div>
   <div class="day-header">
     <div class="day-number">第二天</div>
-    <div class="day-info"><div class="day-title">大雪山秘境＋旭川市區散策</div><div class="day-date">8月17日（一）</div></div>
+    <div class="day-info"><h2 class="day-title">大雪山秘境＋旭川市區散策</h2><div class="day-date">8月17日（一）</div></div>
   </div>
   <div class="timeline">
 
@@ -695,36 +942,12 @@
       <div class="tl-icon">☕</div>
       <div class="tl-body">
         <div class="tl-label">早餐候選</div>
-        <div class="tl-name">旭川早餐</div>
-        <div class="meal-block">
+        <h3 class="tl-name">旭川早餐</h3>
+        <div class="meal-block" data-collapse-title="三個早餐選項">
           <div class="meal-block-title">三選一</div>
-          <div class="meal-option">
-            <div class="meal-dot" style="background:#5A8A5A"></div>
-            <div class="meal-body">
-              <div class="meal-restaurant">飯店早餐 ⭐ 省力推薦</div>
-              <div class="meal-detail">最省力，隔天要開車上山的首選。</div>
-            </div>
-          </div>
-          <div class="meal-option">
-            <div class="meal-dot" style="background:#7AAA7A"></div>
-            <div class="meal-body">
-              <div class="meal-restaurant">Yoshinori Coffee</div>
-              <div class="meal-detail">旭川站前咖啡店，7:30 開。</div>
-              <a class="meal-map" href="https://maps.app.goo.gl/i9bJrGG1yf2hkvfN7" target="_blank" style="color:#5A8A5A">
-                <svg><use href="#pin"/></svg>查看地圖
-              </a>
-            </div>
-          </div>
-          <div class="meal-option">
-            <div class="meal-dot" style="background:#9ABB9A"></div>
-            <div class="meal-body">
-              <div class="meal-restaurant">コロコロ つながりどんぐり</div>
-              <div class="meal-detail">麵包店，9 點開，與租車時間略衝突。</div>
-              <a class="meal-map" href="https://maps.app.goo.gl/WCrg5Mp2Mh676gWC7" target="_blank" style="color:#5A8A5A">
-                <svg><use href="#pin"/></svg>查看地圖
-              </a>
-            </div>
-          </div>
+          <div class="meal-option"><div class="meal-dot" style="background:#5A8A5A"></div><div class="meal-body"><div class="meal-restaurant">飯店早餐 ⭐ 省力推薦</div><div class="meal-detail">最省力，隔天要開車上山的首選。</div></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#7AAA7A"></div><div class="meal-body"><div class="meal-restaurant">Yoshinori Coffee</div><div class="meal-detail">旭川站前咖啡店，7:30 開。</div><a class="meal-map" href="https://maps.app.goo.gl/i9bJrGG1yf2hkvfN7" target="_blank" rel="noopener noreferrer" style="color:#5A8A5A"><svg><use href="#pin"/></svg>查看地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#9ABB9A"></div><div class="meal-body"><div class="meal-restaurant">コロコロ つながりどんぐり</div><div class="meal-detail">麵包店，9 點開，與租車時間略衝突。</div><a class="meal-map" href="https://maps.app.goo.gl/WCrg5Mp2Mh676gWC7" target="_blank" rel="noopener noreferrer" style="color:#5A8A5A"><svg><use href="#pin"/></svg>查看地圖</a></div></div>
         </div>
         <div class="tl-tags"><span class="tl-tag tag-food">🥐 早餐</span></div>
       </div>
@@ -732,72 +955,37 @@
 
     <div class="tl-item">
       <div class="tl-icon">🚗</div>
-      <div class="tl-body">
-        <div class="tl-label">9:00 租車</div>
-        <div class="tl-name">豐田租車 旭川車站前店</div>
+      <div class="tl-body fixed-card">
+        <div class="tl-label">09:00 租車</div>
+        <h3 class="tl-name">豐田租車 旭川車站前店</h3>
         <div class="tl-desc">到層雲峽約 1.5–2 小時，沿途山路但不算難開。</div>
         <div class="tl-tags"><span class="tl-tag tag-transport">🚗 自駕起點</span></div>
-        <a class="map-btn" href="https://maps.app.goo.gl/rsfShn3vP9AHv77h6" target="_blank">
-          <svg><use href="#pin"/></svg>查看地圖
-        </a>
+        <a class="map-btn" href="https://maps.app.goo.gl/rsfShn3vP9AHv77h6" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>查看地圖</a>
       </div>
     </div>
 
-    <div class="transport-row">
-      <div class="transport-line"></div>
-      <div class="transport-pill">🏔 前往層雲峽 · 約 1.5–2h</div>
-      <div class="transport-line"></div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-icon">💧</div>
-      <div class="tl-body">
-        <div class="tl-label">景點</div>
-        <div class="tl-name">流星瀑布</div>
-        <div class="tl-desc">落差約 90 公尺，水勢壯觀，常被稱為「男瀑」。日本瀑布百選之一。</div>
-        <div class="tl-tags"><span class="tl-tag tag-sightseeing">🌊 自然景觀</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=流星の滝+北海道" target="_blank">
-          <svg><use href="#pin"/></svg>查看地圖
-        </a>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-icon">🌊</div>
-      <div class="tl-body">
-        <div class="tl-label">景點</div>
-        <div class="tl-name">銀河瀑布</div>
-        <div class="tl-desc">落差約 120 公尺，水流細長優雅，常被稱為「女瀑」。與流星瀑布距離近，可一起安排。</div>
-        <div class="tl-tags"><span class="tl-tag tag-sightseeing">🌊 自然景觀</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=銀河の滝+北海道" target="_blank">
-          <svg><use href="#pin"/></svg>查看地圖
-        </a>
-      </div>
-    </div>
+    <div class="transport-row"><div class="transport-line"></div><div class="transport-pill">約 09:15 出發前往層雲峽 · 約 1.5–2h</div><div class="transport-line"></div></div>
+    <div class="transport-row"><div class="transport-line"></div><div class="transport-pill">約 10:30–10:45 抵達層雲峽</div><div class="transport-line"></div></div>
 
     <div class="tl-item">
       <div class="tl-icon">🏔</div>
       <div class="tl-body">
-        <div class="tl-label">景點</div>
-        <div class="tl-name">層雲峽</div>
+        <div class="tl-label">抵達景點</div>
+        <h3 class="tl-name">層雲峽</h3>
         <div class="tl-desc">大雪山國立公園內的峽谷溫泉區，以峽谷、瀑布、纜車與壯闊山景聞名。</div>
         <div class="tl-tags"><span class="tl-tag tag-sightseeing">🏔 峽谷</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=層雲峡" target="_blank">
-          <svg><use href="#pin"/></svg>查看地圖
-        </a>
+        <a class="map-btn" href="https://maps.google.com/?q=層雲峡" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>查看地圖</a>
       </div>
     </div>
 
     <div class="tl-item">
       <div class="tl-icon">🚠</div>
       <div class="tl-body">
-        <div class="tl-label">體驗</div>
-        <div class="tl-name">黑岳纜車</div>
+        <div class="tl-label">優先體驗</div>
+        <h3 class="tl-name">黑岳纜車</h3>
         <div class="tl-desc">從層雲峽站連接至黑岳五合目，單程約 7 分鐘，可欣賞壯闊大雪山景色。</div>
         <div class="tl-tags"><span class="tl-tag tag-activity">🚠 纜車</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=大雪山層雲峡黒岳ロープウェイ" target="_blank">
-          <svg><use href="#pin"/></svg>查看地圖
-        </a>
+        <a class="map-btn" href="https://maps.google.com/?q=大雪山層雲峡黒岳ロープウェイ" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>查看地圖</a>
       </div>
     </div>
 
@@ -805,79 +993,85 @@
       <div class="tl-icon">🍱</div>
       <div class="tl-body">
         <div class="tl-label">午餐</div>
-        <div class="tl-name">ともちゃん食堂 黒岳店</div>
+        <h3 class="tl-name">ともちゃん食堂 黒岳店</h3>
         <div class="tl-desc">位於黑岳纜車周邊，適合山區行程中的簡單午餐。</div>
         <div class="tl-tags"><span class="tl-tag tag-food">🍱 午餐</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=ともちゃん食堂+黒岳店" target="_blank">
-          <svg><use href="#pin"/></svg>查看地圖
-        </a>
+        <a class="map-btn" href="https://maps.google.com/?q=ともちゃん食堂+黒岳店" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>查看地圖</a>
       </div>
     </div>
 
-    <div class="transport-row">
-      <div class="transport-line"></div>
-      <div class="transport-pill">🚗 返回旭川市區</div>
-      <div class="transport-line"></div>
+    <div class="tl-item">
+      <div class="tl-icon">🌊</div>
+      <div class="tl-body">
+        <div class="tl-label">相鄰景點群組</div>
+        <h3 class="tl-name">流星瀑布與銀河瀑布</h3>
+        <div class="waterfall-group">
+          <div class="waterfall-card"><h3>流星瀑布</h3><p>落差約 90 公尺，水勢壯觀，常被稱為「男瀑」。日本瀑布百選之一。</p><a class="map-btn" href="https://maps.google.com/?q=流星の滝+北海道" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>查看地圖</a></div>
+          <div class="waterfall-card"><h3>銀河瀑布</h3><p>落差約 120 公尺，水流細長優雅，常被稱為「女瀑」。與流星瀑布距離近，可一起安排。</p><a class="map-btn" href="https://maps.google.com/?q=銀河の滝+北海道" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>查看地圖</a></div>
+        </div>
+        <div class="tl-tags"><span class="tl-tag tag-sightseeing">🌊 自然景觀</span></div>
+      </div>
     </div>
 
+    <div class="transport-row deadline-row"><div class="transport-line"></div><div class="transport-pill">13:30–13:45 最晚離開層雲峽</div><div class="transport-line"></div></div>
+    <div class="transport-row"><div class="transport-line"></div><div class="transport-pill">約 15:00–15:20 抵達旭川，停車並前往餐廳</div><div class="transport-line"></div></div>
+    <div class="transport-row deadline-row"><div class="transport-line"></div><div class="transport-pill">15:45 前抵達大黑屋</div><div class="transport-line"></div></div>
+
     <div class="tl-item">
-      <div class="tl-icon">🌳</div>
-      <div class="tl-body">
-        <div class="tl-label">景點</div>
-        <div class="tl-name">常磐公園</div>
-        <div class="tl-desc">旭川市區大型公園，環境舒服，傍晚散步首選，對小孩與長輩都友善。可順路參拜上川神社頓宮。</div>
-        <div class="tl-tags"><span class="tl-tag tag-sightseeing">🌿 公園</span></div>
-        <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-          <a class="map-btn" href="https://maps.google.com/?q=常磐公園+旭川" target="_blank">
-            <svg><use href="#pin"/></svg>常磐公園
-          </a>
-          <a class="map-btn" href="https://maps.google.com/?q=上川神社頓宮" target="_blank">
-            <svg><use href="#pin"/></svg>上川神社頓宮
-          </a>
+      <div class="tl-icon">🥩</div>
+      <div class="tl-body fixed-card">
+        <div class="tl-label">16:00 晚餐 · 固定時間</div>
+        <h3 class="tl-name">成吉思汗大黑屋</h3>
+        <div class="tl-desc">旭川知名成吉思汗烤羊肉店，羊騷味相對不明顯。</div>
+        <div class="reservation-panel">
+          <div class="reservation-top"><span class="reservation-status">✓ 已完成預約</span><span class="reservation-time">8/17（一）16:00</span></div>
+          <div class="reservation-reminder">建議提前 15 分鐘抵達；店家沒有專用停車場，請預留停車及步行時間。</div>
         </div>
+        <div class="tl-tags"><span class="tl-tag tag-food">🍖 晚餐</span><span class="tl-tag tag-optional">固定時間</span></div>
+        <a class="map-btn" href="https://maps.app.goo.gl/K9GdUV6nikX9jZWj7" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>查看地圖</a>
       </div>
     </div>
 
     <div class="tl-item">
       <div class="tl-icon">🛍</div>
       <div class="tl-body">
-        <div class="tl-label">購物</div>
-        <div class="tl-name">旭川平和通買物公園 ＋ AEON</div>
-        <div class="tl-desc">日本最早的永久性步行者天國。旭川站旁 AEON 商場可補伴手禮或小孩用品。</div>
-        <div class="tl-tags"><span class="tl-tag tag-shopping">🛍 購物</span></div>
-        <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-          <a class="map-btn" href="https://maps.google.com/?q=旭川平和通買物公園" target="_blank">
-            <svg><use href="#pin"/></svg>買物公園
-          </a>
-          <a class="map-btn" href="https://maps.google.com/?q=AEON+旭川駅前" target="_blank">
-            <svg><use href="#pin"/></svg>AEON
-          </a>
-        </div>
+        <div class="tl-label">餐後散步</div>
+        <h3 class="tl-name">旭川平和通買物公園</h3>
+        <div class="tl-desc">日本最早的永久性步行者天國，適合晚餐後散步。</div>
+        <div class="tl-tags"><span class="tl-tag tag-shopping">🛍 購物散策</span></div>
+        <a class="map-btn" href="https://maps.google.com/?q=旭川平和通買物公園" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>買物公園</a>
       </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-icon">🥩</div>
+      <div class="tl-icon">🌳</div>
       <div class="tl-body">
-        <div class="tl-label">晚餐</div>
-        <div class="tl-name">成吉思汗大黑屋 🔥</div>
-        <div class="tl-desc">旭川知名成吉思汗烤羊肉店，羊騷味相對不明顯。<br><strong>⚠ 建議一個月前訂位！</strong></div>
-        <div class="tl-tags"><span class="tl-tag tag-food">🍖 晚餐</span></div>
-        <a class="map-btn" href="https://maps.app.goo.gl/K9GdUV6nikX9jZWj7" target="_blank">
-          <svg><use href="#pin"/></svg>查看地圖
-        </a>
+        <div class="tl-label">餐後彈性安排</div>
+        <h3 class="tl-name">常磐公園及上川神社頓宮</h3>
+        <div class="tl-desc">旭川市區大型公園，環境舒服，傍晚散步首選，對小孩與長輩都友善。可順路參拜上川神社頓宮。</div>
+        <div class="tl-tags"><span class="tl-tag tag-optional">彈性安排</span><span class="tl-tag tag-sightseeing">🌿 公園</span></div>
+        <div style="display:flex;gap:.4rem;flex-wrap:wrap"><a class="map-btn" href="https://maps.google.com/?q=常磐公園+旭川" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>常磐公園</a><a class="map-btn" href="https://maps.google.com/?q=上川神社頓宮" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>上川神社頓宮</a></div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-icon">🛒</div>
+      <div class="tl-body">
+        <div class="tl-label">最後採買選項</div>
+        <h3 class="tl-name">AEON 旭川站前</h3>
+        <div class="tl-desc">旭川站旁 AEON 商場可補伴手禮或小孩用品。</div>
+        <div class="tl-tags"><span class="tl-tag tag-shopping">🛍 購物</span></div>
+        <a class="map-btn" href="https://maps.google.com/?q=AEON+旭川駅前" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>AEON</a>
       </div>
     </div>
 
     <div class="tl-item">
       <div class="tl-icon">🏨</div>
       <div class="tl-body">
-        <div class="tl-label">入住</div>
-        <div class="tl-name">Y's Hotel 旭川站前</div>
+        <div class="tl-label">續住</div>
+        <h3 class="tl-name">Y's Hotel 旭川站前</h3>
         <div class="tl-tags"><span class="tl-tag tag-stay">🛏 住宿</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=Y's+Hotel+旭川站前" target="_blank">
-          <svg><use href="#pin"/></svg>查看地圖
-        </a>
+        <a class="map-btn" href="https://maps.google.com/?q=Y's+Hotel+旭川站前" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>查看地圖</a>
       </div>
     </div>
 
@@ -890,7 +1084,7 @@
   <div class="day-strip"></div>
   <div class="day-header">
     <div class="day-number">第三天</div>
-    <div class="day-info"><div class="day-title">一路南下看花海</div><div class="day-date">8月18日（二）</div></div>
+    <div class="day-info"><h2 class="day-title">一路南下看花海</h2><div class="day-date">8月18日（二）</div></div>
   </div>
   <div class="timeline">
 
@@ -904,10 +1098,10 @@
       <div class="tl-icon">🌾</div>
       <div class="tl-body">
         <div class="tl-label">美瑛 · 彈性</div>
-        <div class="tl-name">新栄の丘展望公園</div>
+        <h3 class="tl-name">新栄の丘展望公園</h3>
         <div class="tl-desc">美瑛丘陵景觀展望點，可看大片田園與起伏丘陵，拍照效果好。</div>
         <div class="tl-tags"><span class="tl-tag tag-optional">📷 彈性安排</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=新栄の丘展望公園" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=新栄の丘展望公園" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -917,10 +1111,10 @@
       <div class="tl-icon">🌸</div>
       <div class="tl-body">
         <div class="tl-label">美瑛 · 彈性</div>
-        <div class="tl-name">四季彩之丘</div>
+        <h3 class="tl-name">四季彩之丘</h3>
         <div class="tl-desc">美瑛代表花田景點，夏季可看彩色花帶，腹地大，適合親子拍照散步。</div>
         <div class="tl-tags"><span class="tl-tag tag-optional">🌺 彈性安排</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=四季彩の丘" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=四季彩の丘" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -930,10 +1124,10 @@
       <div class="tl-icon">💙</div>
       <div class="tl-body">
         <div class="tl-label">美瑛 · 彈性</div>
-        <div class="tl-name">白金青池</div>
+        <h3 class="tl-name">白金青池</h3>
         <div class="tl-desc">池水在光線下呈現藍綠色，北海道熱門拍照點，建議早點到。</div>
         <div class="tl-tags"><span class="tl-tag tag-optional">💎 彈性安排</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=白金青い池" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=白金青い池" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -943,10 +1137,10 @@
       <div class="tl-icon">💜</div>
       <div class="tl-body">
         <div class="tl-label">富良野 · 必訪</div>
-        <div class="tl-name">富田農場</div>
+        <h3 class="tl-name">富田農場</h3>
         <div class="tl-desc">富良野最知名花田，夏季可看薰衣草與多種花田，也是買薰衣草商品的經典景點。</div>
         <div class="tl-tags"><span class="tl-tag tag-sightseeing">🌿 薰衣草花田</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=ファーム富田" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=ファーム富田" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -956,10 +1150,10 @@
       <div class="tl-icon">🎿</div>
       <div class="tl-body">
         <div class="tl-label">富良野</div>
-        <div class="tl-name">富良野北星山</div>
+        <h3 class="tl-name">富良野北星山</h3>
         <div class="tl-desc">富良野市區附近的花田與展望點，可搭纜車或步行看花田與市區景色。</div>
         <div class="tl-tags"><span class="tl-tag tag-sightseeing">🌸 花田</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=北星山ラベンダー園" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=北星山ラベンダー園" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -969,14 +1163,14 @@
       <div class="tl-icon">🍰</div>
       <div class="tl-body">
         <div class="tl-label">午餐候選</div>
-        <div class="tl-name">富良野美食</div>
+        <h3 class="tl-name">富良野美食</h3>
         <div class="meal-block">
           <div class="meal-option">
             <div class="meal-dot" style="background:#8B6BAE"></div>
             <div class="meal-body">
               <div class="meal-restaurant">Campana Rokkatei 六花亭富良野店</div>
               <div class="meal-detail">環境開闊，甜點伴手禮，適合休息看景。</div>
-              <a class="meal-map" href="https://maps.google.com/?q=カンパーナ六花亭" target="_blank" style="color:#8B6BAE">
+              <a class="meal-map" href="https://maps.google.com/?q=カンパーナ六花亭" target="_blank" rel="noopener noreferrer" style="color:#8B6BAE">
                 <svg><use href="#pin"/></svg>查看地圖
               </a>
             </div>
@@ -986,7 +1180,7 @@
             <div class="meal-body">
               <div class="meal-restaurant">いちごとこぶた</div>
               <div class="meal-detail">富良野周邊餐廳，建議出發前確認營業時間。</div>
-              <a class="meal-map" href="https://maps.google.com/?q=いちごとこぶた+富良野" target="_blank" style="color:#8B6BAE">
+              <a class="meal-map" href="https://maps.google.com/?q=いちごとこぶた+富良野" target="_blank" rel="noopener noreferrer" style="color:#8B6BAE">
                 <svg><use href="#pin"/></svg>查看地圖
               </a>
             </div>
@@ -1000,10 +1194,10 @@
       <div class="tl-icon">🧀</div>
       <div class="tl-body">
         <div class="tl-label">富良野</div>
-        <div class="tl-name">富良野起司工房</div>
+        <h3 class="tl-name">富良野起司工房</h3>
         <div class="tl-desc">可買起司、冰淇淋，也有乳製品體驗與伴手禮，適合親子休息。</div>
         <div class="tl-tags"><span class="tl-tag tag-sightseeing">🧀 乳製品體驗</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=富良野チーズ工房" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=富良野チーズ工房" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1013,10 +1207,10 @@
       <div class="tl-icon">🌲</div>
       <div class="tl-body">
         <div class="tl-label">富良野</div>
-        <div class="tl-name">森林精靈露台</div>
+        <h3 class="tl-name">森林精靈露台</h3>
         <div class="tl-desc">新富良野王子大飯店旁的森林小木屋商店街，氣氛很童話，傍晚點燈更漂亮。</div>
         <div class="tl-tags"><span class="tl-tag tag-sightseeing">✨ 氣氛景點</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=ニングルテラス" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=ニングルテラス" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1032,10 +1226,10 @@
       <div class="tl-icon">🏨</div>
       <div class="tl-body">
         <div class="tl-label">放行李 · 入住</div>
-        <div class="tl-name">札幌美居酒店 Mercure</div>
+        <h3 class="tl-name">札幌美居酒店 Mercure</h3>
         <div class="tl-desc">位於薄野／札幌市中心，晚上逛街、吃宵夜很方便。</div>
         <div class="tl-tags"><span class="tl-tag tag-stay">🛏 住宿</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=メルキュール札幌" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=メルキュール札幌" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1045,10 +1239,10 @@
       <div class="tl-icon">🔑</div>
       <div class="tl-body">
         <div class="tl-label">晚上 8 點前</div>
-        <div class="tl-name">還車：Toyota Rent a Car 札幌站前</div>
+        <h3 class="tl-name">還車：Toyota Rent a Car 札幌站前</h3>
         <div class="tl-desc">結束自駕後改用市區大眾交通。還車後搭地鐵南北線到薄野站，步行回美居酒店。</div>
         <div class="tl-tags"><span class="tl-tag tag-transport">🔑 還車</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=トヨタレンタカー+札幌駅前店" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=トヨタレンタカー+札幌駅前店" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1058,10 +1252,10 @@
       <div class="tl-icon">🍣</div>
       <div class="tl-body">
         <div class="tl-label">晚餐</div>
-        <div class="tl-name">迴轉壽司 Pasaaru</div>
+        <h3 class="tl-name">迴轉壽司 Pasaaru</h3>
         <div class="tl-desc">薄野周邊人氣迴轉壽司，適合抵達札幌後吃海鮮。從美居酒店步行可到。</div>
         <div class="tl-tags"><span class="tl-tag tag-food">🐟 晚餐</span></div>
-        <a class="map-btn" href="https://maps.app.goo.gl/UsMgCUdU6ZcTZB1z5" target="_blank">
+        <a class="map-btn" href="https://maps.app.goo.gl/UsMgCUdU6ZcTZB1z5" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1071,10 +1265,10 @@
       <div class="tl-icon">🍨</div>
       <div class="tl-body">
         <div class="tl-label">宵夜</div>
-        <div class="tl-name">Parfaiteria Pal 夜パフェ</div>
+        <h3 class="tl-name">Parfaiteria Pal 夜パフェ</h3>
         <div class="tl-desc">札幌知名夜聖代店，體驗札幌「夜パフェ」文化。薄野一帶步行可到。</div>
         <div class="tl-tags"><span class="tl-tag tag-food">🍧 宵夜</span></div>
-        <a class="map-btn" href="https://maps.app.goo.gl/96ryWnfPQtFbgocz9" target="_blank">
+        <a class="map-btn" href="https://maps.app.goo.gl/96ryWnfPQtFbgocz9" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1089,7 +1283,7 @@
   <div class="day-strip"></div>
   <div class="day-header">
     <div class="day-number">第四天</div>
-    <div class="day-info"><div class="day-title">小樽一日遊</div><div class="day-date">8月19日（三）</div></div>
+    <div class="day-info"><h2 class="day-title">小樽一日遊</h2><div class="day-date">8月19日（三）</div></div>
   </div>
   <div class="timeline">
 
@@ -1103,10 +1297,10 @@
       <div class="tl-icon">🌊</div>
       <div class="tl-body">
         <div class="tl-label">途中停留</div>
-        <div class="tl-name">朝里站</div>
+        <h3 class="tl-name">朝里站</h3>
         <div class="tl-desc">靠海小站，月台與海距離近，適合短暫停留看海拍照。建議停留 15–30 分鐘即可。</div>
         <div class="tl-tags"><span class="tl-tag tag-sightseeing">🌊 小站看海</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=朝里駅" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=朝里駅" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1122,10 +1316,10 @@
       <div class="tl-icon">🦞</div>
       <div class="tl-body">
         <div class="tl-label">早午餐</div>
-        <div class="tl-name">Sankaku Market 小樽三角市場</div>
+        <h3 class="tl-name">Sankaku Market 小樽三角市場</h3>
         <div class="tl-desc">小樽站旁市場，以海鮮丼、螃蟹、干貝等海產聞名。從小樽站步行約 1–3 分鐘。</div>
         <div class="tl-tags"><span class="tl-tag tag-food">🦐 海鮮早午餐</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=小樽三角市場" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=小樽三角市場" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1135,14 +1329,14 @@
       <div class="tl-icon">🛤</div>
       <div class="tl-body">
         <div class="tl-label">散步</div>
-        <div class="tl-name">舊手宮線 → 出拔小路</div>
+        <h3 class="tl-name">舊手宮線 → 出拔小路</h3>
         <div class="tl-desc">小樽市區舊鐵道遺跡，現在是散步與拍照路線，復古感十足。連接至運河旁的復古小吃街。</div>
         <div class="tl-tags"><span class="tl-tag tag-sightseeing">📸 復古散策</span></div>
         <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-          <a class="map-btn" href="https://maps.google.com/?q=旧手宮線" target="_blank">
+          <a class="map-btn" href="https://maps.google.com/?q=旧手宮線" target="_blank" rel="noopener noreferrer">
             <svg><use href="#pin"/></svg>舊手宮線
           </a>
-          <a class="map-btn" href="https://maps.google.com/?q=小樽出抜小路" target="_blank">
+          <a class="map-btn" href="https://maps.google.com/?q=小樽出抜小路" target="_blank" rel="noopener noreferrer">
             <svg><use href="#pin"/></svg>出拔小路
           </a>
         </div>
@@ -1153,20 +1347,20 @@
       <div class="tl-icon">🏪</div>
       <div class="tl-body">
         <div class="tl-label">購物主街</div>
-        <div class="tl-name">小樽堺町通り商店街</div>
+        <h3 class="tl-name">小樽堺町通り商店街</h3>
         <div class="tl-desc">小樽最熱鬧的觀光商店街，集結玻璃工藝、甜點、伴手禮、音樂盒等店家。</div>
         <div class="tl-tags"><span class="tl-tag tag-shopping">🛍 購物</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=小樽堺町通り商店街" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=小樽堺町通り商店街" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
         <div class="meal-block" style="margin-top:.6rem">
           <div class="meal-block-title">沿途必逛店家</div>
-          <div class="meal-option"><div class="meal-dot" style="background:#4A9999"></div><div class="meal-body"><div class="meal-restaurant">🍰 LeTAO 總店</div><div class="meal-detail">雙層乳酪蛋糕招牌</div><a class="meal-map" href="https://maps.google.com/?q=小樽洋菓子舗ルタオ本店" target="_blank" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
-          <div class="meal-option"><div class="meal-dot" style="background:#6AB8B8"></div><div class="meal-body"><div class="meal-restaurant">🎵 小樽音樂盒堂</div><div class="meal-detail">親子都會喜歡</div><a class="meal-map" href="https://maps.google.com/?q=小樽オルゴール堂本館" target="_blank" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
-          <div class="meal-option"><div class="meal-dot" style="background:#8AD0D0"></div><div class="meal-body"><div class="meal-restaurant">🍪 北菓樓 總店</div><div class="meal-detail">泡芙、年輪蛋糕</div><a class="meal-map" href="https://maps.google.com/?q=北菓楼+小樽本館" target="_blank" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
-          <div class="meal-option"><div class="meal-dot" style="background:#A8E0E0"></div><div class="meal-body"><div class="meal-restaurant">🫙 六花亭 小樽運河店</div><div class="meal-detail">奶油葡萄夾心餅</div><a class="meal-map" href="https://maps.google.com/?q=六花亭+小樽運河店" target="_blank" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
-          <div class="meal-option"><div class="meal-dot" style="background:#C4ECEC"></div><div class="meal-body"><div class="meal-restaurant">🍬 柳月 オタルト店</div><div class="meal-detail">北海道甜點品牌</div><a class="meal-map" href="https://maps.google.com/?q=柳月+オタルト店" target="_blank" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
-          <div class="meal-option"><div class="meal-dot" style="background:#D8F0F0"></div><div class="meal-body"><div class="meal-restaurant">🏺 北一硝子三號館</div><div class="meal-detail">玻璃工藝代表店</div><a class="meal-map" href="https://maps.google.com/?q=北一硝子三号館" target="_blank" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#4A9999"></div><div class="meal-body"><div class="meal-restaurant">🍰 LeTAO 總店</div><div class="meal-detail">雙層乳酪蛋糕招牌</div><a class="meal-map" href="https://maps.google.com/?q=小樽洋菓子舗ルタオ本店" target="_blank" rel="noopener noreferrer" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#6AB8B8"></div><div class="meal-body"><div class="meal-restaurant">🎵 小樽音樂盒堂</div><div class="meal-detail">親子都會喜歡</div><a class="meal-map" href="https://maps.google.com/?q=小樽オルゴール堂本館" target="_blank" rel="noopener noreferrer" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#8AD0D0"></div><div class="meal-body"><div class="meal-restaurant">🍪 北菓樓 總店</div><div class="meal-detail">泡芙、年輪蛋糕</div><a class="meal-map" href="https://maps.google.com/?q=北菓楼+小樽本館" target="_blank" rel="noopener noreferrer" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#A8E0E0"></div><div class="meal-body"><div class="meal-restaurant">🫙 六花亭 小樽運河店</div><div class="meal-detail">奶油葡萄夾心餅</div><a class="meal-map" href="https://maps.google.com/?q=六花亭+小樽運河店" target="_blank" rel="noopener noreferrer" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#C4ECEC"></div><div class="meal-body"><div class="meal-restaurant">🍬 柳月 オタルト店</div><div class="meal-detail">北海道甜點品牌</div><a class="meal-map" href="https://maps.google.com/?q=柳月+オタルト店" target="_blank" rel="noopener noreferrer" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#D8F0F0"></div><div class="meal-body"><div class="meal-restaurant">🏺 北一硝子三號館</div><div class="meal-detail">玻璃工藝代表店</div><a class="meal-map" href="https://maps.google.com/?q=北一硝子三号館" target="_blank" rel="noopener noreferrer" style="color:#4A9999"><svg><use href="#pin"/></svg>地圖</a></div></div>
         </div>
       </div>
     </div>
@@ -1175,7 +1369,7 @@
       <div class="tl-icon">⛵</div>
       <div class="tl-body">
         <div class="tl-label">晚上 18:00 出航</div>
-        <div class="tl-name">小樽運河遊覽船</div>
+        <h3 class="tl-name">小樽運河遊覽船</h3>
         <div class="tl-desc">從船上欣賞小樽運河與倉庫群，傍晚到夜間氣氛絕佳。乘船處位於中央橋，從小樽站步行約 10 分鐘。</div>
 
         <!-- Time card -->
@@ -1196,7 +1390,7 @@
           </div>
         </div>
 
-        <a class="map-btn" style="margin-top:.55rem" href="https://maps.google.com/?q=小樽運河クルーズ" target="_blank">
+        <a class="map-btn" style="margin-top:.55rem" href="https://maps.google.com/?q=小樽運河クルーズ" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
         <div class="tl-tags" style="margin-top:.45rem">
@@ -1209,10 +1403,10 @@
       <div class="tl-icon">🍗</div>
       <div class="tl-body">
         <div class="tl-label">晚餐</div>
-        <div class="tl-name">若雞時代なると 炸半雞</div>
+        <h3 class="tl-name">若雞時代なると 炸半雞</h3>
         <div class="tl-desc">小樽名物炸半雞名店，外皮酥、份量足，可預約。</div>
         <div class="tl-tags"><span class="tl-tag tag-food">🍗 晚餐</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=若鶏時代なると本店" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=若鶏時代なると本店" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1228,10 +1422,10 @@
       <div class="tl-icon">🏬</div>
       <div class="tl-body">
         <div class="tl-label">回札幌後</div>
-        <div class="tl-name">狸小路商店街</div>
+        <h3 class="tl-name">狸小路商店街</h3>
         <div class="tl-desc">札幌市中心大型拱廊商店街，藥妝、伴手禮、餐廳很多，雨天也好逛。</div>
         <div class="tl-tags"><span class="tl-tag tag-shopping">🛍 購物</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=狸小路商店街" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=狸小路商店街" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1241,10 +1435,10 @@
       <div class="tl-icon">🍜</div>
       <div class="tl-body">
         <div class="tl-label">宵夜</div>
-        <div class="tl-name">麵屋雪風 薄野本店</div>
+        <h3 class="tl-name">麵屋雪風 薄野本店</h3>
         <div class="tl-desc">薄野人氣拉麵店，小樽回來後的宵夜首選。從美居酒店步行可到。</div>
         <div class="tl-tags"><span class="tl-tag tag-food">🍜 宵夜</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=麺屋雪風+すすきの本店" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=麺屋雪風+すすきの本店" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1255,10 +1449,10 @@
       <div class="tl-icon">🏨</div>
       <div class="tl-body">
         <div class="tl-label">入住</div>
-        <div class="tl-name">札幌美居酒店 Mercure</div>
+        <h3 class="tl-name">札幌美居酒店 Mercure</h3>
         <div class="tl-desc">位於薄野／札幌市中心，晚上逛街、吃宵夜很方便。</div>
         <div class="tl-tags"><span class="tl-tag tag-stay">🛏 住宿</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=メルキュール札幌" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=メルキュール札幌" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1273,7 +1467,7 @@
   <div class="day-strip"></div>
   <div class="day-header">
     <div class="day-number">第五天</div>
-    <div class="day-info"><div class="day-title">札幌市區散策</div><div class="day-date">8月20日（四）</div></div>
+    <div class="day-info"><h2 class="day-title">札幌市區散策</h2><div class="day-date">8月20日（四）</div></div>
   </div>
   <div class="timeline">
 
@@ -1281,10 +1475,10 @@
       <div class="tl-icon">☕</div>
       <div class="tl-body">
         <div class="tl-label">早餐候選</div>
-        <div class="tl-name">札幌早餐</div>
+        <h3 class="tl-name">札幌早餐</h3>
         <div class="meal-block">
-          <div class="meal-option"><div class="meal-dot" style="background:#C4952A"></div><div class="meal-body"><div class="meal-restaurant">松屋 薄野店</div><div class="meal-detail">平價日式連鎖，快速省錢選擇多。</div><a class="meal-map" href="https://maps.app.goo.gl/vu4Sd75N38FTrHXd6" target="_blank" style="color:#C4952A"><svg><use href="#pin"/></svg>查看地圖</a></div></div>
-          <div class="meal-option"><div class="meal-dot" style="background:#E0B860"></div><div class="meal-body"><div class="meal-restaurant">Cafe de Gohan</div><div class="meal-detail">早午餐選項，適合慢慢吃早餐。</div><a class="meal-map" href="https://maps.app.goo.gl/hhzZyKK9rU3MDsHD6" target="_blank" style="color:#C4952A"><svg><use href="#pin"/></svg>查看地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#C4952A"></div><div class="meal-body"><div class="meal-restaurant">松屋 薄野店</div><div class="meal-detail">平價日式連鎖，快速省錢選擇多。</div><a class="meal-map" href="https://maps.app.goo.gl/vu4Sd75N38FTrHXd6" target="_blank" rel="noopener noreferrer" style="color:#C4952A"><svg><use href="#pin"/></svg>查看地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#E0B860"></div><div class="meal-body"><div class="meal-restaurant">Cafe de Gohan</div><div class="meal-detail">早午餐選項，適合慢慢吃早餐。</div><a class="meal-map" href="https://maps.app.goo.gl/hhzZyKK9rU3MDsHD6" target="_blank" rel="noopener noreferrer" style="color:#C4952A"><svg><use href="#pin"/></svg>查看地圖</a></div></div>
         </div>
         <div class="tl-tags"><span class="tl-tag tag-food">🍳 早餐</span></div>
       </div>
@@ -1294,10 +1488,10 @@
       <div class="tl-icon">⛩️</div>
       <div class="tl-body">
         <div class="tl-label">地鐵東西線 → 圓山公園站</div>
-        <div class="tl-name">北海道神宮</div>
+        <h3 class="tl-name">北海道神宮</h3>
         <div class="tl-desc">北海道代表神社，位於圓山公園旁，環境清幽，適合早上參拜散步。</div>
         <div class="tl-tags"><span class="tl-tag tag-sightseeing">⛩️ 神社</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=北海道神宮" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=北海道神宮" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1307,13 +1501,13 @@
       <div class="tl-icon">🗼</div>
       <div class="tl-body">
         <div class="tl-label">地鐵 → 大通站</div>
-        <div class="tl-name">大通公園 ＋ 電視塔 ＋ 時計台</div>
+        <h3 class="tl-name">大通公園 ＋ 電視塔 ＋ 時計台</h3>
         <div class="tl-desc">札幌市中心東西向公園，串連電視塔（可俯瞰市區）、時計台（歷史地標）與地下街。</div>
         <div class="tl-tags"><span class="tl-tag tag-sightseeing">🏛 市中心地標</span></div>
         <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-          <a class="map-btn" href="https://maps.google.com/?q=大通公園+札幌" target="_blank"><svg><use href="#pin"/></svg>大通公園</a>
-          <a class="map-btn" href="https://maps.google.com/?q=札幌電視塔" target="_blank"><svg><use href="#pin"/></svg>電視塔</a>
-          <a class="map-btn" href="https://maps.google.com/?q=札幌時計台" target="_blank"><svg><use href="#pin"/></svg>時計台</a>
+          <a class="map-btn" href="https://maps.google.com/?q=大通公園+札幌" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>大通公園</a>
+          <a class="map-btn" href="https://maps.google.com/?q=札幌電視塔" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>電視塔</a>
+          <a class="map-btn" href="https://maps.google.com/?q=札幌時計台" target="_blank" rel="noopener noreferrer"><svg><use href="#pin"/></svg>時計台</a>
         </div>
       </div>
     </div>
@@ -1322,10 +1516,10 @@
       <div class="tl-icon">🦀</div>
       <div class="tl-body">
         <div class="tl-label">彈性</div>
-        <div class="tl-name">二條市場</div>
+        <h3 class="tl-name">二條市場</h3>
         <div class="tl-desc">札幌市中心海鮮市場，可吃海鮮丼或買海產。若前天已吃小樽三角市場，可彈性取捨。</div>
         <div class="tl-tags"><span class="tl-tag tag-optional">🦐 彈性安排</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=二条市場" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=二条市場" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1335,10 +1529,10 @@
       <div class="tl-icon">🍺</div>
       <div class="tl-body">
         <div class="tl-label">彈性</div>
-        <div class="tl-name">札幌啤酒博物館</div>
+        <h3 class="tl-name">札幌啤酒博物館</h3>
         <div class="tl-desc">介紹札幌啤酒歷史的紅磚建築，旁邊也有啤酒園可用餐。從札幌站搭巴士或計程車前往。</div>
         <div class="tl-tags"><span class="tl-tag tag-optional">🏛 彈性安排</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=札幌啤酒博物館" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=札幌啤酒博物館" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1348,12 +1542,12 @@
       <div class="tl-icon">🛍</div>
       <div class="tl-body">
         <div class="tl-label">札幌站周邊</div>
-        <div class="tl-name">購物巡禮</div>
+        <h3 class="tl-name">購物巡禮</h3>
         <div class="meal-block">
-          <div class="meal-option"><div class="meal-dot" style="background:#C4952A"></div><div class="meal-body"><div class="meal-restaurant">六花亭 札幌本店</div><div class="meal-detail">伴手禮、咖啡甜點休息</div><a class="meal-map" href="https://maps.google.com/?q=六花亭+札幌本店" target="_blank" style="color:#C4952A"><svg><use href="#pin"/></svg>地圖</a></div></div>
-          <div class="meal-option"><div class="meal-dot" style="background:#D4A53A"></div><div class="meal-body"><div class="meal-restaurant">札幌農学校 JR札幌駅店</div><div class="meal-detail">北海道牛奶餅乾，車站內採買方便</div><a class="meal-map" href="https://maps.google.com/?q=札幌農学校+JR札幌駅店" target="_blank" style="color:#C4952A"><svg><use href="#pin"/></svg>地圖</a></div></div>
-          <div class="meal-option"><div class="meal-dot" style="background:#E4B54A"></div><div class="meal-body"><div class="meal-restaurant">Pokémon Center Sapporo</div><div class="meal-detail">適合小孩或寶可夢粉絲</div><a class="meal-map" href="https://maps.google.com/?q=ポケモンセンターサッポロ" target="_blank" style="color:#C4952A"><svg><use href="#pin"/></svg>地圖</a></div></div>
-          <div class="meal-option"><div class="meal-dot" style="background:#F4C55A"></div><div class="meal-body"><div class="meal-restaurant">BIC CAMERA 札幌店</div><div class="meal-detail">電器、玩具、藥妝與日用品</div><a class="meal-map" href="https://maps.google.com/?q=ビックカメラ+札幌店" target="_blank" style="color:#C4952A"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#C4952A"></div><div class="meal-body"><div class="meal-restaurant">六花亭 札幌本店</div><div class="meal-detail">伴手禮、咖啡甜點休息</div><a class="meal-map" href="https://maps.google.com/?q=六花亭+札幌本店" target="_blank" rel="noopener noreferrer" style="color:#C4952A"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#D4A53A"></div><div class="meal-body"><div class="meal-restaurant">札幌農学校 JR札幌駅店</div><div class="meal-detail">北海道牛奶餅乾，車站內採買方便</div><a class="meal-map" href="https://maps.google.com/?q=札幌農学校+JR札幌駅店" target="_blank" rel="noopener noreferrer" style="color:#C4952A"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#E4B54A"></div><div class="meal-body"><div class="meal-restaurant">Pokémon Center Sapporo</div><div class="meal-detail">適合小孩或寶可夢粉絲</div><a class="meal-map" href="https://maps.google.com/?q=ポケモンセンターサッポロ" target="_blank" rel="noopener noreferrer" style="color:#C4952A"><svg><use href="#pin"/></svg>地圖</a></div></div>
+          <div class="meal-option"><div class="meal-dot" style="background:#F4C55A"></div><div class="meal-body"><div class="meal-restaurant">BIC CAMERA 札幌店</div><div class="meal-detail">電器、玩具、藥妝與日用品</div><a class="meal-map" href="https://maps.google.com/?q=ビックカメラ+札幌店" target="_blank" rel="noopener noreferrer" style="color:#C4952A"><svg><use href="#pin"/></svg>地圖</a></div></div>
         </div>
         <div class="tl-tags"><span class="tl-tag tag-shopping">🎁 伴手禮衝刺</span></div>
       </div>
@@ -1363,10 +1557,10 @@
       <div class="tl-icon">🏬</div>
       <div class="tl-body">
         <div class="tl-label">晚上</div>
-        <div class="tl-name">狸小路商店街</div>
+        <h3 class="tl-name">狸小路商店街</h3>
         <div class="tl-desc">最後一晚採買伴手禮、藥妝與宵夜的好選擇。</div>
         <div class="tl-tags"><span class="tl-tag tag-shopping">🛍 最後採買</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=狸小路商店街" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=狸小路商店街" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1377,10 +1571,10 @@
       <div class="tl-icon">🏨</div>
       <div class="tl-body">
         <div class="tl-label">入住</div>
-        <div class="tl-name">札幌美居酒店 Mercure</div>
+        <h3 class="tl-name">札幌美居酒店 Mercure</h3>
         <div class="tl-desc">最後一晚，薄野市中心，步行即可抵達狸小路與各宵夜店。</div>
         <div class="tl-tags"><span class="tl-tag tag-stay">🛏 住宿</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=メルキュール札幌" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=メルキュール札幌" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1395,7 +1589,7 @@
   <div class="day-strip"></div>
   <div class="day-header">
     <div class="day-number">第六天</div>
-    <div class="day-info"><div class="day-title">回台灣</div><div class="day-date">8月21日（五）</div></div>
+    <div class="day-info"><h2 class="day-title">回台灣</h2><div class="day-date">8月21日（五）</div></div>
   </div>
   <div class="timeline">
 
@@ -1409,7 +1603,7 @@
       <div class="tl-icon">🛫</div>
       <div class="tl-body">
         <div class="tl-label">薛哥家</div>
-        <div class="tl-name">12:05 出發回台灣</div>
+        <h3 class="tl-name">12:05 出發回台灣</h3>
         <div class="tl-desc">建議 <strong>9:30–10:00</strong> 前抵達新千歲機場，留時間報到、安檢與買伴手禮。</div>
         <div class="tl-tags"><span class="tl-tag tag-transport">✈ 回家</span></div>
       </div>
@@ -1419,7 +1613,7 @@
       <div class="tl-icon">🛫</div>
       <div class="tl-body">
         <div class="tl-label">薛妹家</div>
-        <div class="tl-name">16:25 出發回台灣</div>
+        <h3 class="tl-name">16:25 出發回台灣</h3>
         <div class="tl-desc">可中午前後再前往機場，或提早到機場吃飯、逛伴手禮區。</div>
         <div class="tl-tags"><span class="tl-tag tag-transport">✈ 回家</span></div>
       </div>
@@ -1429,10 +1623,10 @@
       <div class="tl-icon">🎁</div>
       <div class="tl-body">
         <div class="tl-label">最後補貨</div>
-        <div class="tl-name">新千歲機場伴手禮</div>
+        <h3 class="tl-name">新千歲機場伴手禮</h3>
         <div class="tl-desc">伴手禮與餐飲選擇非常多，最後一天很適合把零食、甜點、海鮮乾貨補齊。</div>
         <div class="tl-tags"><span class="tl-tag tag-shopping">🍫 最後採買</span></div>
-        <a class="map-btn" href="https://maps.google.com/?q=新千歲機場" target="_blank">
+        <a class="map-btn" href="https://maps.google.com/?q=新千歲機場" target="_blank" rel="noopener noreferrer">
           <svg><use href="#pin"/></svg>查看地圖
         </a>
       </div>
@@ -1440,6 +1634,14 @@
 
   </div>
 </section>
+
+</main>
+</div>
+
+<nav class="mobile-day-nav" aria-label="手機每日導覽">
+  <a href="#day1">D1</a><a href="#day2">D2</a><a href="#day3">D3</a>
+  <a href="#day4">D4</a><a href="#day5">D5</a><a href="#day6">D6</a>
+</nav>
 
 <!-- FOOTER -->
 <footer class="trip-footer">
@@ -1454,17 +1656,17 @@
 </footer>
 
 <!-- ══ 浮動快速跳轉：隨時跳到任何一天 ══ -->
-<div class="fab-backdrop" id="fabBackdrop" onclick="toggleFab(false)"></div>
+<button type="button" class="fab-backdrop" id="fabBackdrop" onclick="toggleFab(false)" aria-label="關閉日期選單"></button>
 <div class="fab-wrap">
   <div class="fab-menu" id="fabMenu">
-    <button class="fab-day fd1" onclick="gotoDay(1)"><span class="fab-day-dot"></span>第一天 · 直衝旭川</button>
-    <button class="fab-day fd2" onclick="gotoDay(2)"><span class="fab-day-dot"></span>第二天 · 大雪山秘境</button>
-    <button class="fab-day fd3" onclick="gotoDay(3)"><span class="fab-day-dot"></span>第三天 · 看花海</button>
-    <button class="fab-day fd4" onclick="gotoDay(4)"><span class="fab-day-dot"></span>第四天 · 小樽</button>
-    <button class="fab-day fd5" onclick="gotoDay(5)"><span class="fab-day-dot"></span>第五天 · 札幌散策</button>
-    <button class="fab-day fd6" onclick="gotoDay(6)"><span class="fab-day-dot"></span>第六天 · 回台灣</button>
+    <button type="button" class="fab-day fd1" onclick="gotoDay(1)"><span class="fab-day-dot"></span>第一天 · 直衝旭川</button>
+    <button type="button" class="fab-day fd2" onclick="gotoDay(2)"><span class="fab-day-dot"></span>第二天 · 大雪山秘境</button>
+    <button type="button" class="fab-day fd3" onclick="gotoDay(3)"><span class="fab-day-dot"></span>第三天 · 看花海</button>
+    <button type="button" class="fab-day fd4" onclick="gotoDay(4)"><span class="fab-day-dot"></span>第四天 · 小樽</button>
+    <button type="button" class="fab-day fd5" onclick="gotoDay(5)"><span class="fab-day-dot"></span>第五天 · 札幌散策</button>
+    <button type="button" class="fab-day fd6" onclick="gotoDay(6)"><span class="fab-day-dot"></span>第六天 · 回台灣</button>
   </div>
-  <button class="fab-main" id="fabMain" onclick="toggleFab()">📅</button>
+  <button type="button" class="fab-main" id="fabMain" onclick="toggleFab()" aria-label="開啟日期選單">📅</button>
 </div>
 
 <script>
@@ -1478,6 +1680,7 @@
   ];
   const TRIP_DATES = ['2026-08-16','2026-08-17','2026-08-18','2026-08-19','2026-08-20','2026-08-21'];
   const CN_NUM = ['一','二','三','四','五','六'];
+  const scrollBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 
   let currentToday = null; // 1-6 = 旅行天, 0 = 出發前, 9 = 回國後, null = 非旅程期間也顯示
 
@@ -1521,7 +1724,7 @@
       document.getElementById('tbLabel').textContent = '今天 · 第' + CN_NUM[dayNum-1] + '天 · ' + info.date;
       document.getElementById('tbMain').textContent = info.title;
       document.getElementById('tbJump').textContent = '回到今天 ↑';
-      setTimeout(() => { sec.scrollIntoView({ behavior:'smooth', block:'start' }); }, 400);
+      setTimeout(() => { sec.scrollIntoView({ behavior:scrollBehavior, block:'start' }); }, 400);
 
     } else if (dayNum === 0) {
       banner.classList.add('before');
@@ -1554,11 +1757,11 @@
 
   function jumpToToday() {
     if (currentToday >= 1 && currentToday <= 6) {
-      document.getElementById('day' + currentToday).scrollIntoView({ behavior:'smooth', block:'start' });
+      document.getElementById('day' + currentToday).scrollIntoView({ behavior:scrollBehavior, block:'start' });
     } else if (currentToday === 0) {
-      document.getElementById('tocSection').scrollIntoView({ behavior:'smooth', block:'start' });
+      document.getElementById('tocSection').scrollIntoView({ behavior:scrollBehavior, block:'start' });
     } else {
-      window.scrollTo({ top:0, behavior:'smooth' });
+      window.scrollTo({ top:0, behavior:scrollBehavior });
     }
   }
 
@@ -1571,9 +1774,57 @@
     document.getElementById('fabBackdrop').classList.toggle('show', fabOpen);
   }
   function gotoDay(n) {
-    document.getElementById('day' + n).scrollIntoView({ behavior:'smooth', block:'start' });
+    document.getElementById('day' + n).scrollIntoView({ behavior:scrollBehavior, block:'start' });
     toggleFab(false);
   }
+
+  // 候選清單預設完整可讀；載入後提供原生按鈕收合。
+  document.querySelectorAll('.meal-block').forEach((block, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'collapse-toggle';
+    button.textContent = block.dataset.collapseTitle || block.querySelector('.meal-block-title')?.textContent || '候選與補充資訊';
+    button.setAttribute('aria-expanded', 'true');
+    button.setAttribute('aria-controls', 'meal-options-' + index);
+    Array.from(block.children).forEach(child => {
+      if (child !== button) child.classList.add('collapsible-content');
+    });
+    block.id = 'meal-options-' + index;
+    button.addEventListener('click', () => {
+      const collapsed = block.classList.toggle('is-collapsed');
+      button.setAttribute('aria-expanded', String(!collapsed));
+    });
+    block.prepend(button);
+  });
+
+  const sections = Array.from(document.querySelectorAll('.day-section'));
+  const navLinks = Array.from(document.querySelectorAll('.toc-item, .mobile-day-nav a'));
+  const progressBar = document.getElementById('progressBar');
+  const progressLabel = document.getElementById('progressLabel');
+  const progressPercent = document.getElementById('progressPercent');
+  let visibleDay = 1;
+
+  function updateReadingState() {
+    const marker = window.scrollY + Math.min(window.innerHeight * .34, 260);
+    sections.forEach((section, index) => {
+      if (section.offsetTop <= marker) visibleDay = index + 1;
+    });
+    navLinks.forEach(link => {
+      const active = link.getAttribute('href') === '#day' + visibleDay;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
+    progressLabel.textContent = '目前閱讀：第' + CN_NUM[visibleDay - 1] + '天';
+    const documentRange = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const percent = Math.min(100, Math.max(0, Math.round(window.scrollY / documentRange * 100)));
+    progressBar.style.width = percent + '%';
+    progressPercent.textContent = percent + '%';
+    document.documentElement.style.setProperty('--reading-progress', percent + '%');
+  }
+  updateReadingState();
+  window.addEventListener('scroll', updateReadingState, { passive:true });
+  window.addEventListener('resize', updateReadingState);
 
   // ✅ 自動偵測裝置日期 → 對應旅程哪一天（本地時區，蘋果/安卓皆可）
   (function autoDetectToday() {
